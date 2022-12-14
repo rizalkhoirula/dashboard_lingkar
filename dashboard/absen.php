@@ -5,7 +5,6 @@ if( !isset($_SESSION["login"])){
   header("location: login.php");
   exit;
 }
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -62,7 +61,7 @@ if( !isset($_SESSION["login"])){
       <nav class="vertnav navbar navbar-light">
         <!-- nav bar -->
         <div class="w-100 mb-4 d-flex">
-          <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="./dashboard.html">
+          <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="./dashboard.php">
             <svg version="1.1" id="logo" class="navbar-brand-img brand-sm" xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 120 120" xml:space="preserve">
               <g>
@@ -141,7 +140,6 @@ if( !isset($_SESSION["login"])){
               </a>
               <ul class="collapse list-unstyled pl-4 w-100" id="contact">
                 <a class="nav-link pl-3" href="./income_harian.php"><span class="ml-1">Penghasilan Perhari</span></a>
-                <a class="nav-link pl-3" href="./income_bulanan.php"><span class="ml-1">Report </span></a>
               </ul>
             </li>
           <li class="nav-item dropdown">
@@ -203,12 +201,44 @@ if( !isset($_SESSION["login"])){
       <div class="container-fluid">
         <div class="row justify-content-center">
           <div class="col-12">
-            <h2 class="mb-2 page-title">Absen</h2>
-            <p class="card-text">Ini adalah temapt untuk absen para karyawan yang bekerja di lingkar angkringan dan cafe</p>
+            <h2 class="mb-2 page-title">Data Absensi</h2>
+            <p class="card-text">Ini adalah data absensi para karyawan yang bekerja di lingkar angkringan dan cafe</p>
 
 
-            <!-- Pop up Add Absen -->
-            <button type="button" class="btn mb-2 btn-success" data-toggle="modal" data-target=".modal-right">Add Absen</button>
+            <!-- Pop up Add Karyawan -->
+
+            <form action="" method="post">
+
+
+            <div class="form-group">
+            <button type="button" class="btn mb-2 btn-success" data-toggle="modal" data-target=".modal-right">Add Absensi</button>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            
+
+           
+                <input class="btn mb-2 btn-success" value="<?php if (isset($_POST['from_date'])) {
+                                                                                            echo $_POST['from_date'];
+                                                                                          }  ?>" type="date" name="from_date" />
+
+       
+
+              <button class="btn mb-2 btn-success" aria-expanded="false">
+                To Date
+              </button>
+        
+
+             
+                <input class="btn mb-2 btn-success" value="<?php if (isset($_POST['to_date'])) {
+                                                                                            echo $_POST['to_date'];
+                                                                                          }  ?>" type="date" name="to_date" />
+
+<button class="btn mb-2 btn-success" type="submit" aria-expanded="false">
+                Filter
+              </button>
+
+              </div>
+              </form>
+          
 
             <div class="modal fade modal-right modal-slide" tabdashboard="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-sm" role="document" id="anjaymodal">
@@ -216,35 +246,57 @@ if( !isset($_SESSION["login"])){
 
                   <div class="modal-header">
 
-                    <h5 class="modal-title" id="defaultModalLabel">Add Absen</h5>
+                    <h5 class="modal-title" id="defaultModalLabel">Add Absensi</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <form action="absen.php" method="post" enctype="multipart/form-data">
+                  <form action="absen.php" method="post">
+
                     <div class="modal-body-add">
 
 
+
+
                       <div class="form-group">
-                        <label for="example-text-input" class="form-control-label">Nama</label>
-                        <input class="form-control" type="text" value="" placeholder="Enter Name" maxlength="30" name="txt_nama" required />
+                  <label for="exampleFormControlSelect1">Karyawan</label>
+                  <select class="form-control" name="add-karyawan" required>
+                    <?php
+
+                    echo "<option> Pilih Karyawan</option>";
+                    $query = mysqli_query($koneksi, "select * from karyawan") or die(mysqli_error($koneksi));
+                    while ($row = mysqli_fetch_array($query)) {
+                      echo "<option value=$row[id]> $row[nama]</option>";
+                    }
+
+                    ?>
+
+                  </select>
+                </div>
 
 
 
-                      <div class="form-group mb-3">
-                        <label for="example-date">Tanggal</label>
-                        <input class="form-control" id="example-date" type="date" name="txt_tanggal">
-                      </div>
-                        
-                      <div class="form-group">
-                        <label for="example-text-input" class="form-control-label">Keterangan</label>
-                        <input class="form-control" type="text" value="" placeholder="Enter Keterangan" maxlength="30" name="txt_jumlah" required />
-                      </div>
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">Status</label>
+                  <select class="form-control" name="add-status" required>
+                  <option>Pilih Status</option>
+                    <option value="hadir">Hadir</option>
+                    <option value="Tidak Hadir">Tidak Hadir</option>
+                    
+
+                  </select>
+                </div>
+
+
+                <div class="form-group">
+                  <label for="exampleFormControlTextarea1">Keterangan</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" name="add-keterangan" placeholder="Enter Keterangan" maxlength="500" rows="5"></textarea>
+                </div>
 
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Close</button>
-                      <button class="btn mb-2 btn-primary" type="submit" name="add-absen">Add Absen</button>
+                      <button class="btn mb-2 btn-primary" type="submit" name="add-absensi">Add Absen</button>
                     </div>
                   </form>
 
@@ -253,6 +305,9 @@ if( !isset($_SESSION["login"])){
 
             </div>
             <!-- End Pop Up Add Karyawan-->
+
+
+
 
             <div class="row my-4">
               <!-- Small table -->
@@ -263,40 +318,110 @@ if( !isset($_SESSION["login"])){
                     <table id="tableku" class="table datatables">
                       <thead>
                         <tr>
+                          <th>No</th>
+                          <th>Foto</th>
                           <th>Nama</th>
+                          <th>Status</th>
                           <th>Tanggal</th>
                           <th>Keterangan</th>
+                          <!-- <th>Phone</th> -->
                           <th>Action</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <?php
-                          $query = "SELECT * FROM absen";
+                      <?php
+
+if (isset($_POST['from_date']) && isset($_POST['to_date'])) {
+
+  $from_date = $_POST['from_date'];
+  $to_date = $_POST['to_date'];
+
+  $filter_dek = ("SELECT absen.id , karyawan.nama, karyawan.foto, absen.status, absen.tanggal, absen.keterangan FROM absen INNER JOIN karyawan ON karyawan.id=absen.id_karyawan WHERE absen.tanggal BETWEEN '$from_date' AND '$to_date'");
+  $result   = mysqli_query($koneksi, $filter_dek);
+}else{
+
+
+
+
+                          $query = "SELECT absen.id , karyawan.nama, karyawan.foto, absen.status, absen.tanggal, absen.keterangan FROM absen INNER JOIN karyawan ON karyawan.id=absen.id_karyawan WHERE date(absen.tanggal)=CURRENT_DATE();";
                           $result = mysqli_query($koneksi, $query);
+                        }
                           $no = 0;
                           while ($row = mysqli_fetch_array($result)) {
-                            $userName = $row['nama'];
-                            $tanggal = $row['tanggal'];
-                            $keterangan = $row['keterangan'];
+                            $AbsenNama = $row['nama'];
+                            $AbsenFoto = $row['foto'];
+                            $AbsenStatus = $row['status'];
+                            $AbsenTanggal = $row['tanggal'];
+                            $AbsenKeterangan = $row['keterangan'];
+                            // $foto = $row['foto'];
 
 $no++;
                           ?>
+                        <tr>
+                          
+  
                           <td><?php echo $no; ?></td>
-                            <td><?php echo $userName; ?></td>
-                            <td>
+                          <td>
 
-                           </td>
+<span class="avatar avatar-sm mt-2">
+  <img src="./foto/user/<?php echo $AbsenFoto; ?>" alt="..." class="avatar-img rounded-circle">
+</span>
+
+</td>
+                            <td><?php echo $AbsenNama; ?></td>
                            
-                            <td><?php echo $tanggal; ?></td>
-                            <td><?php echo $keterangan; ?></td>
-          
+                            <td><?php echo $AbsenStatus; ?></td>
+                            <td><?php echo $AbsenTanggal; ?></td>
+                            <td>
+                            <button class="btn btn-primary btn-sm ms-auto" data-toggle="modal" data-target="#modal-keterangan<?php echo $row['id'] ?>">Lihat</button>
+                            </td>
+
                             <td>
                               <button class="btn btn-primary btn-sm ms-auto" data-toggle="modal" data-target="#modal-edit<?php echo $row['id'] ?>">Edit</button>
-                              <button class="btn  btn-danger btn-sm ms-auto" data-toggle="modal" data-target="#verticalModal<?php echo $row['id'] ?>">Delete</button>
+                              <a class="btn btn-success btn-sm ms-auto" target="_blank" href="export_absen.php?id=<?= $row['id'] ?>">Export</a>
+                              <button class="btn btn-danger btn-sm ms-auto" data-toggle="modal" data-target="#verticalModal<?php echo $row['id'] ?>">Delete</button>
                             </td>
 
                         </tr>
+
+
+                         <!-- Pop Up Keterangan -->
+
+                         <div class="modal fade modal-left modal-slide" id="modal-keterangan<?php echo $row['id'] ?>" tabdashboard="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-sm" role="document" id="anjaymodal">
+                            <div class="modal-content >"><br>
+
+                              <div class="modal-header">
+
+                                <h5 class="modal-title" id="defaultModalLabel">Detail Keterangan</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <form action="absen.php?id=<?= $row['id'] ?>" method="post">
+                                <div class="modal-body-add">
+
+
+                                <div class="form-group">
+                  <label for="exampleFormControlTextarea1">Keterangan</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" name="add-keterangan" placeholder="Enter Keterangan" maxlength="500" rows="5"><?php echo $AbsenKeterangan ?></textarea>
+                </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal" >Close</button>
+                                  <!-- <button class="btn mb-2 btn-primary" type="submit" name="submit">Edit</button> -->
+                                </div>
+                              </form>
+
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- End Pop Up Keterangan -->
+
+
+
                         <!-- Pop Up Edit -->
 
                         <div class="modal fade modal-left modal-slide" id="modal-edit<?php echo $row['id'] ?>" tabdashboard="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
@@ -305,36 +430,48 @@ $no++;
 
                               <div class="modal-header">
 
-                                <h5 class="modal-title" id="defaultModalLabel">Edit Absen</h5>
+                                <h5 class="modal-title" id="defaultModalLabel">Edit Karyawan</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
                                 </button>
                               </div>
-                              <form action="absen.php?id=<?= $row['id'] ?>" method="post" enctype="multipart/form-data">
-                                <div class="modal-body-add">
+                              <form action="absen.php?id=<?= $row['id'] ?>" method="post">
+
+<div class="modal-body-add">
 
 
-                                  <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label">Nama</label>
-                                    <input class="form-control" type="text" value="<?php echo $userName; ?>" placeholder="Enter Name" maxlength="30" name="nama" required />
 
-                                  </div>
-                                 
-                                  <div class="form-group mb-3">
-                                    <label for="example-date">Tanggal</label>
-                                    <input class="form-control" id="example-date" type="date" value="<?php echo $tanggal; ?>" name="tanggal">
-                                  </div>
 
-                                  <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label">Keterangan</label>
-                                    <input class="form-control" type="text" value="<?php echo $keterangan; ?>" placeholder="Enter Name" maxlength="50" name="keterangan" required />
+  <div class="form-group">
+<label for="exampleFormControlSelect1">Karyawan</label>
+<select disabled class="form-control" name="edit-karyawan" required>
+<option value="<?php echo $AbsenNama?>"><?php echo $AbsenNama?></option>
+</select>
+</div>
 
-                                  </div>
 
-                                </div>
+
+<div class="form-group">
+<label for="exampleFormControlSelect1">Status</label>
+<select class="form-control" name="edit-status" required>
+<option value="<?php echo $AbsenStatus?>"><?php echo $AbsenStatus?></option>
+<option value="hadir">Hadir</option>
+<option value="absent">Absent</option>
+
+
+</select>
+</div>
+
+
+<div class="form-group">
+<label for="exampleFormControlTextarea1">Keterangan</label>
+<textarea class="form-control" id="exampleFormControlTextarea1" name="edit-keterangan" placeholder="Enter Keterangan" maxlength="500" rows="5"><?php echo $AbsenKeterangan?></textarea>
+</div>
+
+</div>
                                 <div class="modal-footer">
                                   <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal" >Close</button>
-                                  <button class="btn mb-2 btn-primary" type="submit" name="submit">Edit</button>
+                                  <button class="btn mb-2 btn-primary" type="submit" name="edit-absensi">Edit</button>
                                 </div>
                               </form>
 
@@ -356,7 +493,7 @@ $no++;
                                   <span aria-hidden="true">&times;</span>
                                 </button>
                               </div>
-                              <form action="karyawan.php?id=<?= $row['id'] ?>" method="post">
+                              <form action="absen.php?id=<?= $row['id'] ?>" method="post">
                                 <div class="modal-body">
                                   <div class="row">
 
@@ -369,11 +506,11 @@ $no++;
                                   <div class="modal-footer">
 
 
-                                    <!-- <a href="absem.php?id=<?= $row['id'] ?>" class="btn btn-danger btn-sm ms-auto">Delete</a> -->
+                                    <!-- <a href="karyawan.php?id=<?= $row['id'] ?>" class="btn btn-danger btn-sm ms-auto">Delete</a> -->
 
-                                    <button class="btn btn-danger btn-sm ms-auto" name="delete">Delete</button>
+                                    <button class="btn btn-danger btn-sm ms-auto" name="delete-absensi">Delete</button>
                                     <button class="btn btn-success btn-sm ms-auto" data-dismiss="modal">Close</button>
-                                    <!-- <button class="btn btn-danger btn-sm ms-auto" href="hapus_absen.php?id=<?php echo $row['id']; ?>" data-close-delete>Close</button> -->
+                                    <!-- <button class="btn btn-danger btn-sm ms-auto" href="hapus_karyawan.php?id=<?php echo $row['id']; ?>" data-close-delete>Close</button> -->
                                   </div>
                               </form>
                             </div>
@@ -547,93 +684,101 @@ $no++;
 
 </html>
 
-<!-- Syntax Add absen -->
+<!-- Syntax Add Karyawan -->
 
 <?php
 error_reporting(0);
-if (isset($_POST['add-user'])) {
-  $userName = $row['nama'];
-  $keterangan = $row['keterangan'];
-  $tanggal = date('Y-m-d', strtotime($_POST['txt_tanggal']));
-   // $userAlamat = $_POST['txt_alamat'];
+if (isset($_POST['add-absensi'])) {
+  $AddAbsensiKaryawan = $_POST['add-karyawan'];
+  $AddAbsensiStatus = $_POST['add-status'];
+  $AddAbsensiKeterangan = $_POST['add-keterangan'];
+  // $tglmasuk = date('Y-m-d', strtotime($_POST['txt_tgl_masuk']));
+  // $userAlamat = $_POST['txt_alamat'];
 
-  $query    = "INSERT INTO absen SET nama = '$userName', tanggal = '$tanggal',  keterangan = '$keterangan'";
+
+  $query    = "INSERT INTO absen SET id_karyawan = '$AddAbsensiKaryawan', status = '$AddAbsensiStatus', keterangan = '$AddAbsensiKeterangan', tanggal = current_timestamp()";
   $result   = mysqli_query($koneksi, $query);
 
   if ($query) {
     echo "<script>
-  	Swal.fire({title: 'Absen Berhasil Disimpan',text: '',icon: 'success',confirmButtonText: 'OK'
+  	Swal.fire({title: 'Data Berhasil Disimpan',text: '',icon: 'success',confirmButtonText: 'OK'
   	}).then((result) => {if (result.value)
   		{window.location = 'absen.php';}
   	})</script>";
   } else {
 
     echo "<script>
-  		Swal.fire({title: 'Absen Gagal Disimpan',text: '',icon: 'error',confirmButtonText: 'OK'
+  		Swal.fire({title: 'Data Gagal Disimpan',text: '',icon: 'error',confirmButtonText: 'OK'
   		}).then((result) => {if (result.value)
   			{window.location = 'absen.php';}
   		})</script>";
   }
   // if($query)
   // {
-  //   header("location:absen.php");
+  //   header("location:karyawan.php");
   // }
 }
 
 ?>
 
-<!-- END Add absen -->
+<!-- END Add Karyawan -->
 
 
-<!-- Syntax Edit absen -->
+<!-- Syntax Edit Karyawan -->
 <?php
 require('config.php');
 // error_reporting(1);
 $eid = $_GET['id'];
-$enama = $_POST['nama'];
-$etanggal = date('Y-m-d', strtotime($_POST['tanggal']));
-$eketerangan = $_POST['keterangan'];
+$EditAbsensiKaryawan = $_POST['edit-karyawan'];
+$EditAbsensiStatus = $_POST['edit-status'];
+$EditAbsensiKeterangan = $_POST['edit-keterangan'];
 
-if (isset($_POST['submit'])) {
-  if (isset($_POST['submit'])) {
-      $sql = mysqli_query($koneksi, "UPDATE `absen` SET nama='$enama',tanggal = '$etanggal',  keterangan = '$eketerangan' WHERE id='$eid'");
-      echo "<script>
-            Swal.fire({title: 'Absen Berhasil Diubah',text: '',icon: 'success',confirmButtonText: 'OK'
-            }).then((result) => {if (result.value)
-                {window.location = 'absen.php';}
-            })</script>";
-    } else {
-      $sql = mysqli_query ($koneksi, "UPDATE `absen` SET nama='$enama',tanggal = '$etanggal',  keterangan = '$eketerangan' WHERE id='$eid'");
-      echo "<script>
-            Swal.fire({title: 'Absen Berhasil Diubah',text: '',icon: 'success',confirmButtonText: 'OK'
-            }).then((result) => {if (result.value)
-                {window.location = 'absen.php';}
-            })</script>";
-    }
-  } else {
-    echo "<script>
-            Swal.fire({title: 'Absen Berhasil Diubah',text: '',icon: 'success',confirmButtonText: 'OK'
-            }).then((result) => {if (result.value)
-                {window.location = 'absen.php';}
-            })</script>";
-  }
+
+
+if (isset($_POST['edit-absensi'])) {
+      $sql = mysqli_query($koneksi, "UPDATE `absen` SET status='$EditAbsensiStatus',keterangan='$EditAbsensiKeterangan' WHERE id='$eid'");
+
+      if($sql){
+
+        echo "<script>
+        Swal.fire({title: 'Data Berhasil Diubah',text: '',icon: 'success',confirmButtonText: 'OK'
+        }).then((result) => {if (result.value)
+            {window.location = 'absen.php';}
+        })</script>";
+      }else{
+        
+        echo "<script>
+        Swal.fire({title: 'Data Gagal Diubah',text: '',icon: 'error',confirmButtonText: 'OK'
+        }).then((result) => {if (result.value)
+            {window.location = 'absen.php';}
+        })</script>";
+      }
+   
+}
+   
+
+  
+
+
+
+
 error_reporting(0);
 
 $did = $_GET['id'];
-if (isset($_POST['delete'])) {
+if (isset($_POST['delete-absensi'])) {
 
-  $querydel = "DELETE FROM karyawan WHERE id = '$did'";
+  $querydel = "DELETE FROM absen WHERE id = '$did'";
   $result = mysqli_query($koneksi, $querydel);
 
   if ($result) {
     echo "<script>
-    Swal.fire({title: 'Absen Berhasil Dihapus',text: '',icon: 'success',confirmButtonText: 'OK'
+    Swal.fire({title: 'Data Berhasil Dihapus',text: '',icon: 'success',confirmButtonText: 'OK'
     }).then((result) => {if (result.value)
         {window.location = 'absen.php';}
     })</script>";
   } else {
     echo "<script>
-    Swal.fire({title: 'Absen Gagal Dihapus',text: '',icon: 'error',confirmButtonText: 'OK'
+    Swal.fire({title: 'Data Gagal Dihapus',text: '',icon: 'error',confirmButtonText: 'OK'
     }).then((result) => {if (result.value)
         {window.location = 'absen.php';}
     })</script>";
