@@ -54,7 +54,7 @@ if( !isset($_SESSION["login"])) {
                     <td><?php echo $nama ?></td>
                     
                     <td><?php echo $tanggal ?></td>
-                    <td><?php echo $jumlah ?></td>
+                    <td><?php echo "Rp. ". number_format ($jumlah,0,',','.');?></td>
                 </tr>
 
             <?php

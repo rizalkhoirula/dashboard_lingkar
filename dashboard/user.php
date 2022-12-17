@@ -156,7 +156,7 @@ if( !isset($_SESSION["login"])){
               <span> LANDING PAGE</span>
             </p>
           <li class="nav-item w-100">
-            <a class="nav-link" href="https://www.instagram.com/lingkar.cafe_/">
+            <a class="nav-link" href="../index.php">
               <br>
               <i class="fe fe-external-link"></i>
               <span class="ml-3 item-text">Lingkar Cafe</span>

@@ -125,7 +125,7 @@ else {
                         class="ml-1 item-text">Karyawan</span></a></li>
                 </ul>
                 <p class="text-muted nav-heading mt-4 mb-1"><span>LANDING PAGE</span></p>
-              <li class="nav-item w-100"><a class="nav-link" href="https://www.instagram.com/lingkar.cafe_/"><br><i
+              <li class="nav-item w-100"><a class="nav-link" href="../index.php"><br><i
                     class="fe fe-external-link"></i><span class="ml-3 item-text">Lingkar Cafe</span><br><br></a>
                 <p class="text-muted nav-heading mt-4 mb-1"><span>USER SETTINGS</span></p>
               </li>

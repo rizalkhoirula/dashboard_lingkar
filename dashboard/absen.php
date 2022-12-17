@@ -157,7 +157,7 @@ if( !isset($_SESSION["login"])){
               <span> LANDING PAGE</span>
             </p>
           <li class="nav-item w-100">
-            <a class="nav-link" href="https://www.instagram.com/lingkar.cafe_/">
+            <a class="nav-link" href="../index.php">
               <br>
               <i class="fe fe-external-link"></i>
               <span class="ml-3 item-text">Lingkar Cafe</span>
@@ -281,7 +281,7 @@ if( !isset($_SESSION["login"])){
                   <select class="form-control" name="add-status" required>
                   <option>Pilih Status</option>
                     <option value="hadir">Hadir</option>
-                    <option value="Tidak Hadir">Tidak Hadir</option>
+                    <option value="absent">Absent</option>
                     
 
                   </select>
@@ -343,11 +343,13 @@ if (isset($_POST['from_date']) && isset($_POST['to_date'])) {
 
 
 
-                          $query = "SELECT absen.id , karyawan.nama, karyawan.foto, absen.status, absen.tanggal, absen.keterangan FROM absen INNER JOIN karyawan ON karyawan.id=absen.id_karyawan WHERE date(absen.tanggal)=CURRENT_DATE();";
+                          $query = "SELECT absen.id, karyawan.id as idkaryawan, karyawan.nama, karyawan.foto, absen.status, absen.tanggal, absen.keterangan FROM absen INNER JOIN karyawan ON karyawan.id=absen.id_karyawan WHERE date(absen.tanggal)=CURRENT_DATE();";
                           $result = mysqli_query($koneksi, $query);
                         }
                           $no = 0;
                           while ($row = mysqli_fetch_array($result)) {
+                            $KaryawanId = $row['idkaryawan'];
+                            $AbsenId = $row['id'];
                             $AbsenNama = $row['nama'];
                             $AbsenFoto = $row['foto'];
                             $AbsenStatus = $row['status'];
@@ -378,7 +380,7 @@ $no++;
 
                             <td>
                               <button class="btn btn-primary btn-sm ms-auto" data-toggle="modal" data-target="#modal-edit<?php echo $row['id'] ?>">Edit</button>
-                              <a class="btn btn-success btn-sm ms-auto" target="_blank" href="export_absen.php?id=<?= $row['id'] ?>">Export</a>
+                              <a class="btn btn-success btn-sm ms-auto" target="_blank" href="export_absen.php?id=<?= $row['idkaryawan'] ?>">Export</a>
                               <button class="btn btn-danger btn-sm ms-auto" data-toggle="modal" data-target="#verticalModal<?php echo $row['id'] ?>">Delete</button>
                             </td>
 
@@ -387,13 +389,11 @@ $no++;
 
                          <!-- Pop Up Keterangan -->
 
-                         <div class="modal fade modal-left modal-slide" id="modal-keterangan<?php echo $row['id'] ?>" tabdashboard="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
-                          <div class="modal-dialog modal-sm" role="document" id="anjaymodal">
-                            <div class="modal-content >"><br>
-
+                         <div class="modal fade" id="modal-keterangan<?php echo $row['id'] ?>" tabdashboard="-1" role="dialog" aria-labelledby="verticalModalTitle" aria-hidden="true">
+                         <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
                               <div class="modal-header">
-
-                                <h5 class="modal-title" id="defaultModalLabel">Detail Keterangan</h5>
+                                <h5 class="modal-title" id="verticalModalTitle">Keterangan</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
                                 </button>
@@ -403,7 +403,7 @@ $no++;
 
 
                                 <div class="form-group">
-                  <label for="exampleFormControlTextarea1">Keterangan</label>
+                  
                   <textarea class="form-control" id="exampleFormControlTextarea1" name="add-keterangan" placeholder="Enter Keterangan" maxlength="500" rows="5"><?php echo $AbsenKeterangan ?></textarea>
                 </div>
 

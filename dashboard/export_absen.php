@@ -43,7 +43,7 @@ if( !isset($_SESSION["login"])){
 
             $id = $_GET['id'];
 
-            $query  = "SELECT absen.id ,karyawan.nama, karyawan.foto, absen.status, absen.tanggal, absen.keterangan FROM absen INNER JOIN karyawan ON karyawan.id=absen.id_karyawan WHERE absen.id = '$id'";
+            $query  = "SELECT absen.id ,karyawan.nama, karyawan.foto, absen.status, absen.tanggal, absen.keterangan FROM absen INNER JOIN karyawan ON karyawan.id=absen.id_karyawan WHERE karyawan.id = '$id'";
             $result = mysqli_query($koneksi, $query);
 
             $no     = 1;
