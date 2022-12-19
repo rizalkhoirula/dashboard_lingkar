@@ -156,6 +156,7 @@ if( !isset($_SESSION["login"])){
             <p class="text-muted nav-heading mt-4 mb-1">
               <span> LANDING PAGE</span>
             </p>
+            
           <li class="nav-item w-100">
             <a class="nav-link" href="../index.php">
               <br>
