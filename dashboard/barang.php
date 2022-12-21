@@ -4,8 +4,6 @@ session_start();
 if( !isset($_SESSION["login"])){
   header("location: login.php");
   exit;
-}  else {
-  $ssuser = $_SESSION["ssuser"];
 }
 ?>
 <!doctype html>
@@ -20,7 +18,8 @@ if( !isset($_SESSION["login"])){
   <title>Dashboard Lingkar Cafe</title>
   <!-- Simple bar CSS -->
   <link rel="stylesheet" href="css/simplebar.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css"> -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">
   <!-- Fonts CSS -->
   <link
     href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap"
@@ -33,6 +32,7 @@ if( !isset($_SESSION["login"])){
   <link rel="stylesheet" href="css/app-light.css" id="lightTheme">
   <link rel="stylesheet" href="css/app-dark.css" id="darkTheme">
 </head>
+
 <body class="vertical  dark  ">
   <div class="wrapper">
     <nav class="topnav navbar navbar-light">
@@ -198,55 +198,157 @@ if( !isset($_SESSION["login"])){
       <div class="container-fluid">
         <div class="row justify-content-center">
           <div class="col-12">
-            <h2 class="mb-2 page-title">Data Income</h2>
-            <p class="card-text">Ini adalah data penghasilan harian di lingkar angkringan dan cafe</p>
+            <h2 class="mb-2 page-title">Data Barang</h2>
+            <p class="card-text">Ini adalah data barang masuk dan keluar di lingkar angkringan dan cafe</p>
+
+            
 
 
-            <!-- Pop up Add Income -->
-            <button type="button" class="btn mb-2 btn-success" data-toggle="modal" data-target="#verticalModal">Add Income</button>
-            <a href="report.php" target=”_blank” class="btn mb-2 btn-primary" id="pp"> Report</a>  
-            <style>
-                #pp{
-                    float: right;
-                  }
-            </style>           
-            <div class="modal fade modal-left modal-slide" id="verticalModal" tabdashboard="-1" role="dialog" aria-labelledby="verticalModalTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                          <div class="modal-content">
+            <!-- Pop up Add Karyawan -->
+
+            <form action="" method="post">
+
+
+            <div class="form-group">
+                              <div class="col-md-4">
+                <div class="card shadow mb-4">
+                  <div class="card-body">
+                    <div class="row align-items-right">
+                      <div class="col">
+                        <small class="text-muted mb-1">Total Pendapatan</small>
+                        <h3 class="card-title mb-0">
+                        
+                        <?php
+                        require ("./config.php");
+                          $query = "SELECT DISTINCT SUM(jumlah) AS total FROM income WHERE MONTH(tgl_income)=MONTH(curdate()) AND YEAR(tgl_income)=YEAR(curdate())";
+                          $querysum = mysqli_query($koneksi,$query);
+
+                        while ($row = mysqli_fetch_array($querysum)) {
+                          $total = $row['total'];
+                          // echo '<h3> ' . $total . '</h3>';
+                        
+                        ?>
+                          <?php
+                          if ($total == '') {
+                            echo "<h3>Rp. 0</h3>";
+                          } else {
+                            echo "Rp. " . number_format($total, 0, ',', '.');
+                          }
+                          ?>
+                          <?php
+                        }
+                          ?>
+                    
+                        </h3>
+                        <small class="text-muted mb-1">Bulan Ini</small>
+                        
+                      </div>
+                      <div class="col-4 text-right">
+                        <span class="sparkline inlinepie"></span>
+                      </div>
+                    </div> <!-- /. row -->
+                  </div> <!-- /. card-body -->
+                </div> <!-- /. card -->
+              </div> <!-- /. col -->
+              
+            <button type="button" class="btn mb-2 btn-success" data-toggle="modal" data-target=".modal-right">Add Barang</button>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+
+            
+            
+
+           
+                <input class="btn mb-2 btn-success" value="<?php if (isset($_POST['from_date'])) {
+                                                                                            echo $_POST['from_date'];
+                                                                                          }  ?>" type="date" name="from_date" />
+
+       
+
+              <a class="btn mb-2 btn-primary" aria-expanded="false">
+                To Date
+                                                                                        </a>
+        
+
+             
+                <input class="btn mb-2 btn-success" value="<?php if (isset($_POST['to_date'])) {
+                                                                                            echo $_POST['to_date'];
+                                                                                          }  ?>" type="date" name="to_date" />
+
+<button class="btn mb-2 btn-success" type="submit" aria-expanded="false">
+                Filter
+              </button>
+              </div>
+              </form>
+          
+
+            <div class="modal fade modal-right modal-slide" tabdashboard="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-sm" role="document" id="anjaymodal">
+                <div class="modal-content"><br>
 
                   <div class="modal-header">
 
-                    <h5 class="modal-title" id="defaultModalLabel">Tambah Penghasilan</h5>
+                    <h5 class="modal-title" id="defaultModalLabel">Add Barang</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <form action="income_harian.php" method="post" enctype="multipart/form-data">
+                  <form action="barang.php" method="post">
+
                     <div class="modal-body-add">
 
 
-                      <div class="form-group" >
-                        <label for="example-text-input" class="form-control-label" disabled>Nama</label>
-                        <input class="form-control" type="text" value="<?php echo $ssuser ?>" placeholder="Enter Name" maxlength="30" name="txt_nama" disabled />
 
-                      </div>
 
-                      <div class="form-group mb-3">
-                        <label for="example-date">Tanggal penghasilan</label>
-                        <input class="form-control" id="example-date" type="date" name="txt_tgl_penghasilan">
-                      </div>
-
-                      
                       <div class="form-group">
-                        <label for="example-text-input" class="form-control-label">Jumlah</label>
-                        <input class="form-control" type="text" value="" placeholder="Enter Jumlah" maxlength="30" id="rupiah" name="txt_jumlah" required />
+                  <label for="exampleFormControlSelect1">Karyawan</label>
+                  <select class="form-control" name="add-karyawan" required>
+                    <?php
+
+                    echo "<option> Pilih Karyawan</option>";
+                    $query = mysqli_query($koneksi, "select * from karyawan") or die(mysqli_error($koneksi));
+                    while ($row = mysqli_fetch_array($query)) {
+                      echo "<option value=$row[id]> $row[nama]</option>";
+                    }
+
+                    ?>
+
+                  </select>
+                </div>
+
+                <div class="form-group">
+                        <label for="example-text-input" class="form-control-label">Nama Barang</label>
+                        <input class="form-control" type="text" value="" placeholder="Enter Name" maxlength="30" name="add-namabarang" required />
 
                       </div>
+
+
+
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">Jenis</label>
+                  <select class="form-control" name="add-jenis" required>
+                  <option>Pilih Jenis</option>
+                    <option value="basah">Basah</option>
+                    <option value="kering">Kering</option>
+                    
+
+                  </select>
+                </div>
+                 <div class="form-group">
+                        <label for="example-text-input" class="form-control-label">Jumlah</label>
+                        <input class="form-control" name="add-jumlah" type="text" value="" placeholder="Enter Jumlah" oninput="this.value = this.value.replace(/[^\d]+/, '').replace(/(\..*?)\..*/g, '$1');" maxlength="3" name="add-jumlah" id="add-jumlah" required />
+
+                      </div>
+
+
+                <div class="form-group">
+                  <label for="exampleFormControlTextarea1">Keterangan</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" name="add-keterangan" placeholder="Enter Keterangan" maxlength="500" rows="5"></textarea>
+                </div>
 
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Close</button>
-                      <button class="btn mb-2 btn-primary" type="submit" name="add-income">Add Penghasilan</button>
+                      <button class="btn mb-2 btn-primary" type="submit" name="add-barang">Add Barang</button>
                     </div>
                   </form>
 
@@ -254,8 +356,7 @@ if( !isset($_SESSION["login"])){
               </div>
 
             </div>
-            
-            <!-- End Pop Up Add Income-->
+            <!-- End Pop Up Add Karyawan-->
 
 
 
@@ -270,36 +371,107 @@ if( !isset($_SESSION["login"])){
                       <thead>
                         <tr>
                           <th>No</th>
-                          <th>Nama</th>
-                          <th>Tanggal tambah</th>
-                          <th>jumlah</th>
+                          <th>nama Karyawan</th>
+                          <th>Nama Barang</th>
+                          <th>Jenis</th>
+                          <th>Tanggal</th>
+                          <th>Jumlah</th>
+                          <th>Keterangan</th>
                           <th>Action</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <?php
-                          $query = "SELECT * FROM income";
+                      <?php
+
+if (isset($_POST['from_date']) && isset($_POST['to_date'])) {
+
+  $from_date = $_POST['from_date'];
+  $to_date = $_POST['to_date'];
+
+  $filter_dek = ("SELECT barang.id, karyawan.nama as namakaryawan, barang.nama_barang, barang.jenis, barang.tanggal, barang.jumlah, barang.keterangan FROM barang INNER JOIN karyawan ON karyawan.id=barang.id_karyawan WHERE barang.tanggal BETWEEN '$from_date' AND '$to_date'");
+  $result   = mysqli_query($koneksi, $filter_dek);
+}else{
+
+
+
+
+                          $query = "SELECT barang.id, karyawan.nama as namakaryawan, barang.nama_barang, barang.jenis, barang.tanggal, barang.jumlah, barang.keterangan FROM barang INNER JOIN karyawan ON karyawan.id=barang.id_karyawan;";
                           $result = mysqli_query($koneksi, $query);
+                        }
                           $no = 0;
                           while ($row = mysqli_fetch_array($result)) {
-                            $userName = $row['nama'];
-                            $tgl = $row['tgl_income'];
-                            $jumlah = $row['jumlah'];
+                            
+                            $KaryawanId = $row['namakaryawan'];
+                            $AbsenId = $row['id'];
+                            $barangNama = $row['nama_barang'];
+                            $jenisbarang = $row['jenis'];
+                            $barangTanggal = $row['tanggal'];
+                          $barangjumlah = $row['jumlah'];
+                            $barangKeterangan = $row['keterangan'];
+                            // $foto = $row['foto'];
+
 $no++;
                           ?>
+                        <tr>
+                          
+  
                           <td><?php echo $no; ?></td>
-                            <td><?php echo $userName; ?></td>
-                            <td><?php echo $tgl; ?></td>
-                            <td><?php echo "Rp. ". number_format ($jumlah,0,',','.'); ?></td>
-                    
+                          <td><?php echo $KaryawanId; ?></td>
+                          
+                            <td><?php echo $barangNama; ?></td>
+                            
+                           
+                            <td><?php echo $jenisbarang; ?></td>
+                            <td><?php echo $barangTanggal; ?></td>
+                            <td><?php echo $barangjumlah; ?></td>
+                            <td>
+                            <button class="btn btn-primary btn-sm ms-auto" data-toggle="modal" data-target="#modal-keterangan<?php echo $row['id'] ?>">Lihat</button>
+                            </td>
 
                             <td>
                               <button class="btn btn-primary btn-sm ms-auto" data-toggle="modal" data-target="#modal-edit<?php echo $row['id'] ?>">Edit</button>
-                              <button class="btn  btn-danger btn-sm ms-auto" data-toggle="modal" data-target="#verticalModal<?php echo $row['id'] ?>">Delete</button>
+                              <a class="btn btn-success btn-sm ms-auto" target="_blank" href="export_absen.php?id=<?= $row['idkaryawan'] ?>">Export</a>
+                              <button class="btn btn-danger btn-sm ms-auto" data-toggle="modal" data-target="#verticalModal<?php echo $row['id'] ?>">Delete</button>
                             </td>
 
                         </tr>
+
+
+                         <!-- Pop Up Keterangan -->
+
+                         <div class="modal fade" id="modal-keterangan<?php echo $row['id'] ?>" tabdashboard="-1" role="dialog" aria-labelledby="verticalModalTitle" aria-hidden="true">
+                         <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="verticalModalTitle">Keterangan</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <form action="absen.php?id=<?= $row['id'] ?>" method="post">
+                                <div class="modal-body-add">
+
+
+                                <div class="form-group">
+                  
+                  <textarea class="form-control" id="exampleFormControlTextarea1" name="add-keterangan" placeholder="Enter Keterangan" maxlength="500" rows="5"><?php echo $barangKeterangan ?></textarea>
+                </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal" >Close</button>
+                                  <!-- <button class="btn mb-2 btn-primary" type="submit" name="submit">Edit</button> -->
+                                </div>
+                              </form>
+
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- End Pop Up Keterangan -->
+
+
+
                         <!-- Pop Up Edit -->
 
                         <div class="modal fade modal-left modal-slide" id="modal-edit<?php echo $row['id'] ?>" tabdashboard="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
@@ -308,40 +480,48 @@ $no++;
 
                               <div class="modal-header">
 
-                                <h5 class="modal-title" id="defaultModalLabel">Edit Penghasilan</h5>
+                                <h5 class="modal-title" id="defaultModalLabel">Edit Karyawan</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
                                 </button>
                               </div>
-                              <form action="income_harian.php?id=<?= $row['id'] ?>" method="post" enctype="multipart/form-data">
-                                <div class="modal-body-add">
+                              <form action="absen.php?id=<?= $row['id'] ?>" method="post">
 
-
-                                  <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label">Nama</label>
-                                    <input class="form-control" type="text" value="<?php echo $userName; ?>" placeholder="Enter Name" maxlength="30" name="enama" disabled />
-
-                                  </div>
-                                  
+<div class="modal-body-add">
 
 
 
-                                  <div class="form-group mb-3">
-                                    <label for="example-date">Tanggal tambah</label>
-                                    <input class="form-control" id="example-date" type="date" value="<?php echo $tgl; ?>" name="tgl_tambah">
-                                  </div>
+
+  <div class="form-group">
+<label for="exampleFormControlSelect1">Karyawan</label>
+<select disabled class="form-control" name="edit-karyawan" required>
+<option value="<?php echo $AbsenNama?>"><?php echo $AbsenNama?></option>
+</select>
+</div>
 
 
-                                  <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label">Jumlah</label>
-                                    <input class="form-control" type="text" value="<?php echo number_format ($jumlah,0,',',''); ?>" placeholder="Enter Jumlah"  name="jumlah">
 
-                                  </div>
+<div class="form-group">
+<label for="exampleFormControlSelect1">Status</label>
+<select class="form-control" name="edit-status" required>
+<option value="<?php echo $AbsenStatus?>"><?php echo $AbsenStatus?></option>
+<option value="hadir">Hadir</option>
+<option value="absent">Absent</option>
 
-                                </div>
+
+</select>
+</div>
+
+
+<div class="form-group">
+<label for="exampleFormControlTextarea1">Keterangan</label>
+<textarea class="form-control" id="exampleFormControlTextarea1" name="edit-keterangan" placeholder="Enter Keterangan" maxlength="500" rows="5"><?php echo $AbsenKeterangan?></textarea>
+</div>
+
+</div>
                                 <div class="modal-footer">
                                   <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal" >Close</button>
-                                  <button class="btn mb-2 btn-primary" type="submit" name="submit">Edit</button>
+                                  <button class="btn mb-2 btn-primary" type="submit" name="edit-absensi">Edit</button>
                                 </div>
                               </form>
 
@@ -363,11 +543,11 @@ $no++;
                                   <span aria-hidden="true">&times;</span>
                                 </button>
                               </div>
-                              <form action="income_harian.php?id=<?= $row['id'] ?>" method="post">
+                              <form action="absen.php?id=<?= $row['id'] ?>" method="post">
                                 <div class="modal-body">
                                   <div class="row">
 
-                                    &nbsp; &nbsp; &nbsp; Apakah Anda Yakin ingin menghapus data  yang ditambah oleh : <?php echo $row['nama'] ?>
+                                    Apakah Anda Yakin ingin menghapus data dari : <?php echo $row['nama'] ?>
                                     <br>
                                     <br>
 
@@ -378,7 +558,7 @@ $no++;
 
                                     <!-- <a href="karyawan.php?id=<?= $row['id'] ?>" class="btn btn-danger btn-sm ms-auto">Delete</a> -->
 
-                                    <button class="btn btn-danger btn-sm ms-auto" name="delete">Delete</button>
+                                    <button class="btn btn-danger btn-sm ms-auto" name="delete-absensi">Delete</button>
                                     <button class="btn btn-success btn-sm ms-auto" data-dismiss="modal">Close</button>
                                     <!-- <button class="btn btn-danger btn-sm ms-auto" href="hapus_karyawan.php?id=<?php echo $row['id']; ?>" data-close-delete>Close</button> -->
                                   </div>
@@ -544,9 +724,9 @@ $no++;
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <script>
-    $(document).ready(function() {
-      $('#tableku').DataTable();
-    });
+    $(document).ready(function () {
+    $('#tableku').DataTable();
+});
   </script>
 
   <script src="js/apps.js"></script>
@@ -554,29 +734,35 @@ $no++;
 
 </html>
 
-<!-- Syntax Add Income -->
+<!-- Syntax Add Barang -->
 
 <?php
 error_reporting(0);
-if (isset($_POST['add-income'])) {
-  $userNama = $_POST['txt_nama'];
-  $tglincome = date('Y-m-d', strtotime($_POST['txt_tgl_penghasilan']));
-  $jumlah = $_POST['txt_jumlah'];
-  $query    = "INSERT INTO income SET nama = '$ssuser',  tgl_income = '$tglincome',  jumlah = '$jumlah'";
+if (isset($_POST['add-barang'])) {
+  $AddbarangKaryawan = $_POST['add-karyawan'];
+  $Addbarangjenis = $_POST['add-jenis'];
+    $Addbarangnama = $_POST['add-namabarang'];
+    $Addbarangjumlah = $_POST['add-jumlah'];
+  $AddbarangKeterangan = $_POST['add-keterangan'];
+  // $tglmasuk = date('Y-m-d', strtotime($_POST['txt_tgl_masuk']));
+  // $userAlamat = $_POST['txt_alamat'];
+
+
+  $query    = "INSERT INTO barang SET id_karyawan = '$AddbarangKaryawan', nama_barang = '$Addbarangnama', jenis = '$Addbarangjenis', jumlah ='$Addbarangjumlah',  keterangan = '$AddbarangKeterangan', tanggal = current_timestamp()";
   $result   = mysqli_query($koneksi, $query);
 
   if ($query) {
     echo "<script>
   	Swal.fire({title: 'Data Berhasil Disimpan',text: '',icon: 'success',confirmButtonText: 'OK'
   	}).then((result) => {if (result.value)
-  		{window.location = 'income_harian.php';}
+  		{window.location = 'barang.php';}
   	})</script>";
   } else {
 
     echo "<script>
   		Swal.fire({title: 'Data Gagal Disimpan',text: '',icon: 'error',confirmButtonText: 'OK'
   		}).then((result) => {if (result.value)
-  			{window.location = 'income_harian.php';}
+  			{window.location = 'barang.php';}
   		})</script>";
   }
   // if($query)
@@ -587,57 +773,66 @@ if (isset($_POST['add-income'])) {
 
 ?>
 
-<!-- END Add income -->
+<!-- END Add Karyawan -->
 
 
-<!-- Syntax Edit income -->
+<!-- Syntax Edit Karyawan -->
 <?php
 require('config.php');
 // error_reporting(1);
 $eid = $_GET['id'];
-$enama = $_POST['enama'];
-$etglincome = date('Y-m-d', strtotime($_POST['tgl_tambah']));
-$ejumlah = $_POST['jumlah'];
+$EditAbsensiKaryawan = $_POST['edit-karyawan'];
+$EditAbsensiStatus = $_POST['edit-status'];
+$EditAbsensiKeterangan = $_POST['edit-keterangan'];
 
 
-if (isset($_POST['submit'])) {
-  if (isset($_POST['submit'])) {
-      $sql = mysqli_query($koneksi, "UPDATE `income` SET tgl_income='$etglincome', jumlah='$ejumlah' WHERE id='$eid'");
-      echo "<script>
-            Swal.fire({title: 'Data Berhasil Diubah',text: '',icon: 'success',confirmButtonText: 'OK'
-            }).then((result) => {if (result.value)
-                {window.location = 'income_harian.php';}
-            })</script>";
-  } else {
-    echo "<script>
-            Swal.fire({title: 'Data Berhasil Diubah',text: '',icon: 'success',confirmButtonText: 'OK'
-            }).then((result) => {if (result.value)
-                {window.location = 'income_harian.php';}
-            })</script>";
-  }
+
+if (isset($_POST['edit-absensi'])) {
+      $sql = mysqli_query($koneksi, "UPDATE `absen` SET status='$EditAbsensiStatus',keterangan='$EditAbsensiKeterangan' WHERE id='$eid'");
+
+      if($sql){
+
+        echo "<script>
+        Swal.fire({title: 'Data Berhasil Diubah',text: '',icon: 'success',confirmButtonText: 'OK'
+        }).then((result) => {if (result.value)
+            {window.location = 'absen.php';}
+        })</script>";
+      }else{
+        
+        echo "<script>
+        Swal.fire({title: 'Data Gagal Diubah',text: '',icon: 'error',confirmButtonText: 'OK'
+        }).then((result) => {if (result.value)
+            {window.location = 'absen.php';}
+        })</script>";
+      }
+   
 }
+   
+
+  
+
 
 
 
 error_reporting(0);
 
 $did = $_GET['id'];
-if (isset($_POST['delete'])) {
+if (isset($_POST['delete-absensi'])) {
 
-  $querydel = "DELETE FROM income WHERE id = '$did'";
+  $querydel = "DELETE FROM absen WHERE id = '$did'";
   $result = mysqli_query($koneksi, $querydel);
 
   if ($result) {
     echo "<script>
     Swal.fire({title: 'Data Berhasil Dihapus',text: '',icon: 'success',confirmButtonText: 'OK'
     }).then((result) => {if (result.value)
-        {window.location = 'income_harian.php';}
+        {window.location = 'absen.php';}
     })</script>";
   } else {
     echo "<script>
     Swal.fire({title: 'Data Gagal Dihapus',text: '',icon: 'error',confirmButtonText: 'OK'
     }).then((result) => {if (result.value)
-        {window.location = 'income_harian.php';}
+        {window.location = 'absen.php';}
     })</script>";
   }
 }

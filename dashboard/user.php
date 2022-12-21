@@ -121,14 +121,11 @@ if( !isset($_SESSION["login"])){
           <li class="nav-item dropdown">
             <a href="#tables" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
               <i class="fe fe-grid fe-16"></i>
-              <span class="ml-3 item-text">Barang</span>
+              <span class="ml-3 item-text">Data Barang</span>
             </a>
             <ul class="collapse list-unstyled pl-4 w-100" id="tables">
               <li class="nav-item">
-                <a class="nav-link pl-3" href="./barang_in.php"><span class="ml-1 item-text">Barang Masuk</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link pl-3" href="./barang_out.php"><span class="ml-1 item-text">Barang Keluar</span></a>
+                <a class="nav-link pl-3" href="./barang.php"><span class="ml-1 item-text">Barang</span></a>
               </li>
             </ul>
           </li>
@@ -139,7 +136,7 @@ if( !isset($_SESSION["login"])){
               </a>
               <ul class="collapse list-unstyled pl-4 w-100" id="contact">
                 <a class="nav-link pl-3" href="./income_harian.php"><span class="ml-1">Penghasilan Perhari</span></a>
-                             </ul>
+              </ul>
             </li>
           <li class="nav-item dropdown">
             <a href="#charts" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
