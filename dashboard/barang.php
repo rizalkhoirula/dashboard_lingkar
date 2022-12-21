@@ -4,6 +4,8 @@ session_start();
 if( !isset($_SESSION["login"])){
   header("location: login.php");
   exit;
+}  else {
+  $ssuser = $_SESSION["ssuser"];
 }
 ?>
 <!doctype html>
@@ -193,34 +195,27 @@ if( !isset($_SESSION["login"])){
 
     </aside>
     <!-- END DARI SIDEBAR -->
+    
+                              
 
     <main role="main" class="main-content">
       <div class="container-fluid">
-        <div class="row justify-content-center">
+        
+        <div class="row justify-content-right">
+          
+          
           <div class="col-12">
-            <h2 class="mb-2 page-title">Data Barang</h2>
-            <p class="card-text">Ini adalah data barang masuk dan keluar di lingkar angkringan dan cafe</p>
-
-            
-
-
-            <!-- Pop up Add Karyawan -->
-
-            <form action="" method="post">
-
-
-            <div class="form-group">
-                              <div class="col-md-4">
+            <div class="col-md-4" id="pp">
                 <div class="card shadow mb-4">
                   <div class="card-body">
                     <div class="row align-items-right">
                       <div class="col">
-                        <small class="text-muted mb-1">Total Pendapatan</small>
+                        <small class="text-muted mb-1">Total Pengeluaran</small>
                         <h3 class="card-title mb-0">
                         
                         <?php
                         require ("./config.php");
-                          $query = "SELECT DISTINCT SUM(jumlah) AS total FROM income WHERE MONTH(tgl_income)=MONTH(curdate()) AND YEAR(tgl_income)=YEAR(curdate())";
+                          $query = "SELECT DISTINCT SUM(harga) AS total FROM barang WHERE MONTH(tanggal)=MONTH(curdate()) AND YEAR(tanggal)=YEAR(curdate())";
                           $querysum = mysqli_query($koneksi,$query);
 
                         while ($row = mysqli_fetch_array($querysum)) {
@@ -240,7 +235,7 @@ if( !isset($_SESSION["login"])){
                           ?>
                     
                         </h3>
-                        <small class="text-muted mb-1">Bulan Ini</small>
+                        <small class="text-muted mb-1">Hari Ini</small>
                         
                       </div>
                       <div class="col-4 text-right">
@@ -250,6 +245,26 @@ if( !isset($_SESSION["login"])){
                   </div> <!-- /. card-body -->
                 </div> <!-- /. card -->
               </div> <!-- /. col -->
+              
+              <style>
+                #pp{
+                    float: right;
+                  }
+            </style> 
+            <h2 class="mb-2 page-title">Data Barang</h2>
+            
+            <p class="card-text">Ini adalah data barang masuk dan keluar di lingkar angkringan dan cafe</p>
+            
+
+            
+
+
+            <!-- Pop up Add Karyawan -->
+
+            <form action="" method="post">
+
+
+            <div class="form-group">
               
             <button type="button" class="btn mb-2 btn-success" data-toggle="modal" data-target=".modal-right">Add Barang</button>
             &nbsp;&nbsp;&nbsp;&nbsp;
@@ -278,7 +293,9 @@ if( !isset($_SESSION["login"])){
                 Filter
               </button>
               </div>
+              
               </form>
+                                                                                          
           
 
             <div class="modal fade modal-right modal-slide" tabdashboard="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
@@ -296,24 +313,14 @@ if( !isset($_SESSION["login"])){
 
                     <div class="modal-body-add">
 
+                 <div class="form-group">
 
-
-
-                      <div class="form-group">
-                  <label for="exampleFormControlSelect1">Karyawan</label>
-                  <select class="form-control" name="add-karyawan" required>
-                    <?php
-
-                    echo "<option> Pilih Karyawan</option>";
-                    $query = mysqli_query($koneksi, "select * from karyawan") or die(mysqli_error($koneksi));
-                    while ($row = mysqli_fetch_array($query)) {
-                      echo "<option value=$row[id]> $row[nama]</option>";
-                    }
-
-                    ?>
-
-                  </select>
                 </div>
+                <div class="form-group">
+                        <label for="example-text-input" class="form-control-label">Nama Karyawan</label>
+                        <input class="form-control" type="text" value="<?php echo $ssuser ?>" placeholder="" maxlength="30" name="add-namakaryawan" disabled />
+
+                      </div>
 
                 <div class="form-group">
                         <label for="example-text-input" class="form-control-label">Nama Barang</label>
@@ -327,7 +334,7 @@ if( !isset($_SESSION["login"])){
                   <label for="exampleFormControlSelect1">Jenis</label>
                   <select class="form-control" name="add-jenis" required>
                   <option>Pilih Jenis</option>
-                    <option value="basah">Basah</option>
+                    <option value="basah">basah</option>
                     <option value="kering">Kering</option>
                     
 
@@ -336,6 +343,12 @@ if( !isset($_SESSION["login"])){
                  <div class="form-group">
                         <label for="example-text-input" class="form-control-label">Jumlah</label>
                         <input class="form-control" name="add-jumlah" type="text" value="" placeholder="Enter Jumlah" oninput="this.value = this.value.replace(/[^\d]+/, '').replace(/(\..*?)\..*/g, '$1');" maxlength="3" name="add-jumlah" id="add-jumlah" required />
+
+                      </div>
+
+                      <div class="form-group">
+                        <label for="example-text-input" class="form-control-label">Harga</label>
+                        <input class="form-control" name="add-harga" type="text" value="" placeholder="Enter harga" oninput="this.value = this.value.replace(/[^\d]+/, '').replace(/(\..*?)\..*/g, '$1');" maxlength="10" name="add-harga" id="add-harga" required />
 
                       </div>
 
@@ -376,6 +389,7 @@ if( !isset($_SESSION["login"])){
                           <th>Jenis</th>
                           <th>Tanggal</th>
                           <th>Jumlah</th>
+                          <th>Harga</th>
                           <th>Keterangan</th>
                           <th>Action</th>
                         </tr>
@@ -388,26 +402,27 @@ if (isset($_POST['from_date']) && isset($_POST['to_date'])) {
   $from_date = $_POST['from_date'];
   $to_date = $_POST['to_date'];
 
-  $filter_dek = ("SELECT barang.id, karyawan.nama as namakaryawan, barang.nama_barang, barang.jenis, barang.tanggal, barang.jumlah, barang.keterangan FROM barang INNER JOIN karyawan ON karyawan.id=barang.id_karyawan WHERE barang.tanggal BETWEEN '$from_date' AND '$to_date'");
+  $filter_dek = ("SELECT * FROM barang WHERE tanggal BETWEEN '$from_date' AND '$to_date'");
   $result   = mysqli_query($koneksi, $filter_dek);
 }else{
 
 
 
 
-                          $query = "SELECT barang.id, karyawan.nama as namakaryawan, barang.nama_barang, barang.jenis, barang.tanggal, barang.jumlah, barang.keterangan FROM barang INNER JOIN karyawan ON karyawan.id=barang.id_karyawan;";
+                          $query = "SELECT * from barang;";
                           $result = mysqli_query($koneksi, $query);
                         }
                           $no = 0;
                           while ($row = mysqli_fetch_array($result)) {
                             
-                            $KaryawanId = $row['namakaryawan'];
+                            $KaryawanId = $row['karyawan'];
                             $AbsenId = $row['id'];
                             $barangNama = $row['nama_barang'];
                             $jenisbarang = $row['jenis'];
                             $barangTanggal = $row['tanggal'];
                           $barangjumlah = $row['jumlah'];
                             $barangKeterangan = $row['keterangan'];
+                            $harga = $row['harga'];
                             // $foto = $row['foto'];
 
 $no++;
@@ -424,6 +439,7 @@ $no++;
                             <td><?php echo $jenisbarang; ?></td>
                             <td><?php echo $barangTanggal; ?></td>
                             <td><?php echo $barangjumlah; ?></td>
+                            <td><?php echo  "Rp. ". number_format ($harga,0,',','.'); ?></td>
                             <td>
                             <button class="btn btn-primary btn-sm ms-auto" data-toggle="modal" data-target="#modal-keterangan<?php echo $row['id'] ?>">Lihat</button>
                             </td>
@@ -485,40 +501,57 @@ $no++;
                                   <span aria-hidden="true">&times;</span>
                                 </button>
                               </div>
-                              <form action="absen.php?id=<?= $row['id'] ?>" method="post">
+                              <form action="barang.php?id=<?= $row['id'] ?>" method="post">
 
 <div class="modal-body-add">
 
 
 
 
-  <div class="form-group">
-<label for="exampleFormControlSelect1">Karyawan</label>
-<select disabled class="form-control" name="edit-karyawan" required>
-<option value="<?php echo $AbsenNama?>"><?php echo $AbsenNama?></option>
-</select>
-</div>
+ <div class="form-group">
+
+                </div>
+                <div class="form-group">
+                        <label for="example-text-input" class="form-control-label">Nama Karyawan</label>
+                        <input class="form-control" type="text" value="<?php echo $ssuser ?>" placeholder="" maxlength="30" name="add-namakaryawan" disabled />
+
+                      </div>
+
+                <div class="form-group">
+                        <label for="example-text-input" class="form-control-label">Nama Barang</label>
+                        <input class="form-control" type="text" value="" placeholder="Enter Name" maxlength="30" name="add-namabarang" required />
+
+                      </div>
 
 
 
-<div class="form-group">
-<label for="exampleFormControlSelect1">Status</label>
-<select class="form-control" name="edit-status" required>
-<option value="<?php echo $AbsenStatus?>"><?php echo $AbsenStatus?></option>
-<option value="hadir">Hadir</option>
-<option value="absent">Absent</option>
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">Jenis</label>
+                  <select class="form-control" name="add-jenis" required>
+                  <option>Pilih Jenis</option>
+                    <option value="basah">basah</option>
+                    <option value="kering">Kering</option>
+                    
+
+                  </select>
+                </div>
+                 <div class="form-group">
+                        <label for="example-text-input" class="form-control-label">Jumlah</label>
+                        <input class="form-control" name="add-jumlah" type="text" value="" placeholder="Enter Jumlah" oninput="this.value = this.value.replace(/[^\d]+/, '').replace(/(\..*?)\..*/g, '$1');" maxlength="3" name="add-jumlah" id="add-jumlah" required />
+
+                      </div>
+
+                      <div class="form-group">
+                        <label for="example-text-input" class="form-control-label">Harga</label>
+                        <input class="form-control" name="add-harga" type="text" value="" placeholder="Enter harga" oninput="this.value = this.value.replace(/[^\d]+/, '').replace(/(\..*?)\..*/g, '$1');" maxlength="10" name="add-harga" id="add-harga" required />
+
+                      </div>
 
 
-</select>
-</div>
-
-
-<div class="form-group">
-<label for="exampleFormControlTextarea1">Keterangan</label>
-<textarea class="form-control" id="exampleFormControlTextarea1" name="edit-keterangan" placeholder="Enter Keterangan" maxlength="500" rows="5"><?php echo $AbsenKeterangan?></textarea>
-</div>
-
-</div>
+                <div class="form-group">
+                  <label for="exampleFormControlTextarea1">Keterangan</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" name="add-keterangan" placeholder="Enter Keterangan" maxlength="500" rows="5"><?php ?></textarea>
+                </div>
                                 <div class="modal-footer">
                                   <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal" >Close</button>
                                   <button class="btn mb-2 btn-primary" type="submit" name="edit-absensi">Edit</button>
@@ -739,16 +772,17 @@ $no++;
 <?php
 error_reporting(0);
 if (isset($_POST['add-barang'])) {
-  $AddbarangKaryawan = $_POST['add-karyawan'];
+  $Addnamakaryawan = $_POST['add-namakaryawan'];
   $Addbarangjenis = $_POST['add-jenis'];
     $Addbarangnama = $_POST['add-namabarang'];
     $Addbarangjumlah = $_POST['add-jumlah'];
   $AddbarangKeterangan = $_POST['add-keterangan'];
+  $harga = $_POST['add-harga'];
   // $tglmasuk = date('Y-m-d', strtotime($_POST['txt_tgl_masuk']));
   // $userAlamat = $_POST['txt_alamat'];
 
 
-  $query    = "INSERT INTO barang SET id_karyawan = '$AddbarangKaryawan', nama_barang = '$Addbarangnama', jenis = '$Addbarangjenis', jumlah ='$Addbarangjumlah',  keterangan = '$AddbarangKeterangan', tanggal = current_timestamp()";
+  $query    = "INSERT INTO barang SET karyawan  = '$ssuser', harga ='$harga', nama_barang = '$Addbarangnama', jenis = '$Addbarangjenis', jumlah ='$Addbarangjumlah',  keterangan = '$AddbarangKeterangan', tanggal = current_timestamp()";
   $result   = mysqli_query($koneksi, $query);
 
   if ($query) {
