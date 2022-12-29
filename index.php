@@ -474,17 +474,7 @@ if (isset($_POST['submit-reservation'])) {
                                                 </div>
                                                 <div class="col-lg-12">
                                                     <div class="tab-item">
-                                                        <img src="assets/images/drinkdrink.jpg" alt="">
-                                                        <h4>Teh</h4>
-                                                        <p>Varian : Teh manis, Teh Tawar dan Lemon tea.</p>
-                                                        <div class="price">
-                                                            <h6>4k-5k</h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <div class="tab-item">
-                                                        <img src="assets/images/drinkdrink.jpg" alt="">
+                                                        <img src="assets/images/drink2.jpg" alt="">
                                                         <h4>Teh</h4>
                                                         <p>Varian : Teh manis, Teh Tawar dan Lemon tea.</p>
                                                         <div class="price">
@@ -555,16 +545,6 @@ if (isset($_POST['submit-reservation'])) {
                                                         <p>Varian: Leci, melon, strawberry, dan Vanilla.</p>
                                                         <div class="price">
                                                             <h6>5k</h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <div class="tab-item">
-                                                        <img src="assets/images/tab-item-04.png" alt="">
-                                                        <h4>Jus</h4>
-                                                        <p>Varian: Melon, Apel, dan jambu. Bisa request tingkat kemanisan.</p>
-                                                        <div class="price">
-                                                            <h6>6k</h6>
                                                         </div>
                                                     </div>
                                                 </div>
