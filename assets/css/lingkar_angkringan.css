@@ -923,19 +923,22 @@ menu
 }
 
 .card1 {
-  background-image: url(../images/menu-item-01.jpg);
+  background-image: url(../images/bestseller7.jpeg);
 }
 .card2 {
-  background-image: url(../images/menu-item-02.jpg);
+  background-image: url(../images/bestseller1.jpg);
 }
 .card3 {
-  background-image: url(../images/menu-item-03.jpg);
+  background-image: url(../images/bestseller2.jpg);
 }
 .card4 {
-  background-image: url(../images/menu-item-04.jpg);
+  background-image: url(../images/bestseller3.jpg);
 }
 .card5 {
-  background-image: url(../images/menu-item-05.jpg);
+  background-image: url(../images/bestseller4.jpg);
+}
+.card6 {
+  background-image: url(../images/bestseller6.jpg);
 }
 
 
@@ -945,14 +948,14 @@ menu
   background-color: #3a333f;
   border: 1px solid #3a333f;
   transform: translateY(100%)
-  translateY(120px)
+  translateY(100px)
   translateZ(0);
   transition: transform 0.5s ease-out;
 }
 
 .card:hover .info,
 .card:hover .info:before {
-  transform: translateY(200px) translateZ(0);
+  transform: translateY(100px) translateZ(0);
 }
 
 .title {
@@ -964,7 +967,8 @@ menu
 }
 
 .description {
-  padding: 0px 30px;
+  padding: 0px 0px;
+  text-align: center;
   color: #fff;
 }
 
