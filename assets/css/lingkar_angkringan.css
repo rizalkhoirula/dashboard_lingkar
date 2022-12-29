@@ -961,6 +961,7 @@ menu
 .title {
   margin: 0;
   padding: 30px 30px 20px 30px;
+  text-align: center;
   font-size: 20px;
   font-weight: 700;
   color: #fff;
@@ -989,6 +990,7 @@ menu
   margin-left: 30px;
   margin-top: 20px;
   padding-bottom: 30px;
+  text-align: center;
 }
 
 #menu .owl-menu-item {
