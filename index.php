@@ -115,7 +115,7 @@ if (isset($_POST['submit-reservation'])) {
                 <div class="col-lg-4">
                     <div class="left-content">
                         <div class="inner-content">
-                            <h4>Lingkar Angkringan dan Cafe</h4>
+                            <h4>LINGKAR ANGKRINGAN DAN CAFE</h4>
                             <h6>THE BEST EXPERIENCE</h6>
                             <div class="main-white-button scroll-to-section">
                                 <a href="#reservation">Make A Reservation</a>
