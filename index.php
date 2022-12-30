@@ -45,7 +45,7 @@ if (isset($_POST['submit-reservation'])) {
     
     <body>
     
-    <!-- ***** Preloader Start ***** -->
+    <!-- ** Preloader Start ** -->
     <div id="preloader">
         <div class="jumper">
             <div></div>
@@ -53,21 +53,21 @@ if (isset($_POST['submit-reservation'])) {
             <div></div>
         </div>
     </div>  
-    <!-- ***** Preloader End ***** -->
+    <!-- ** Preloader End ** -->
     
     
-    <!-- ***** Header Area Start ***** -->
+    <!-- ** Header Area Start ** -->
     <header class="header-area header-sticky">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <nav class="main-nav">
-                        <!-- ***** Logo Start ***** -->
+                        <!-- ** Logo Start ** -->
                         <a href="index.php" class="logo">
                             <img src="assets/images/revisi logo no bg 2.png " chefs>
                         </a>
-                        <!-- ***** Logo End ***** -->
-                        <!-- ***** Menu Start ***** -->
+                        <!-- ** Logo End ** -->
+                        <!-- ** Menu Start ** -->
                         <ul class="nav">
                             <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
                             <li class="scroll-to-section"><a href="#about">About</a></li>
@@ -100,15 +100,15 @@ if (isset($_POST['submit-reservation'])) {
                         <a class='menu-trigger'>
                             <span>Menu</span>
                         </a>
-                        <!-- ***** Menu End ***** -->
+                        <!-- ** Menu End ** -->
                     </nav>
                 </div>
             </div>
         </div>
     </header>
-    <!-- ***** Header Area End ***** -->
+    <!-- ** Header Area End ** -->
 
-    <!-- ***** Main Banner Area Start ***** -->
+    <!-- ** Main Banner Area Start ** -->
     <div id="top">
         <div class="container-fluid">
             <div class="row">
@@ -153,9 +153,9 @@ if (isset($_POST['submit-reservation'])) {
             </div>
         </div>
     </div>
-    <!-- ***** Main Banner Area End ***** -->
+    <!-- ** Main Banner Area End ** -->
 
-    <!-- ***** About Area Starts ***** -->
+    <!-- ** About Area Starts ** -->
     <section class="section" id="about">
         <div class="container">
             <div class="row">
@@ -183,9 +183,9 @@ if (isset($_POST['submit-reservation'])) {
             </div>
         </div>
     </section>
-    <!-- ***** About Area Ends ***** -->
+    <!-- ** About Area Ends ** -->
 
-    <!-- ***** Menu Area Starts ***** -->
+    <!-- ** Menu Area Starts ** -->
     <section class="section" id="menu">
         <div class="container">
             <div class="row">
@@ -273,9 +273,9 @@ if (isset($_POST['submit-reservation'])) {
             </div>
         </div>
     </section>
-    <!-- ***** Menu Area Ends ***** -->
+    <!-- ** Menu Area Ends ** -->
 
-<!-- ***** Menu Area Starts ***** -->
+<!-- ** Menu Area Starts ** -->
 <section class="section" id="offers">
     <div class="container">
         <div class="row">
@@ -580,9 +580,9 @@ if (isset($_POST['submit-reservation'])) {
         </div>
     </div>
 </section>
-<!-- ***** Chefs Area Ends ***** --> 
+<!-- ** Chefs Area Ends ** --> 
 
-    <!-- ***** Chefs Area Starts ***** -->
+    <!-- ** Chefs Area Starts ** -->
     <section class="section" id="chefs">
         <div class="container">
             <div class="row">
@@ -648,9 +648,9 @@ if (isset($_POST['submit-reservation'])) {
             </div>
         </div>
     </section>
-    <!-- ***** Chefs Area Ends ***** -->
+    <!-- ** Chefs Area Ends ** -->
 
-    <!-- ***** Reservation Us Area Starts ***** -->
+    <!-- ** Reservation Us Area Starts ** -->
     <section class="section" id="reservation">
         <div class="container">
             <div class="row">
@@ -779,9 +779,9 @@ if (isset($_POST['submit-reservation'])) {
             </div>
         </div>
     </section>
-    <!-- ***** Reservation Area Ends ***** -->
+    <!-- ** Reservation Area Ends ** -->
     
-    <!-- ***** Footer Start ***** -->
+    <!-- ** Footer Start ** -->
     <footer>
         <div class="container">
             <div class="row">
