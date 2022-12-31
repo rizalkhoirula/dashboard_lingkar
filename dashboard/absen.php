@@ -330,7 +330,7 @@ if (isset($_POST['from_date']) && isset($_POST['to_date'])) {
   $from_date = $_POST['from_date'];
   $to_date = $_POST['to_date'];
 
-  $filter_dek = ("SELECT absen.id , karyawan.nama, karyawan.foto, absen.status, absen.tanggal, absen.keterangan FROM absen INNER JOIN karyawan ON karyawan.id=absen.id_karyawan WHERE absen.tanggal BETWEEN '$from_date' AND '$to_date'");
+  $filter_dek = ("SELECT absen.id, karyawan.id as idkaryawan, karyawan.nama, karyawan.foto, absen.status, absen.tanggal, absen.keterangan FROM absen INNER JOIN karyawan ON karyawan.id=absen.id_karyawan WHERE absen.tanggal BETWEEN '$from_date' AND '$to_date'");
   $result   = mysqli_query($koneksi, $filter_dek);
 }else{
 
@@ -342,6 +342,7 @@ if (isset($_POST['from_date']) && isset($_POST['to_date'])) {
                         }
                           $no = 0;
                           while ($row = mysqli_fetch_array($result)) {
+                            $KaryawanId = $row['idkaryawan'];
                             $AbsenId = $row['id'];
                             $AbsenNama = $row['nama'];
                             $AbsenFoto = $row['foto'];
