@@ -215,8 +215,19 @@ if( !isset($_SESSION["login"])){
                         
                         <?php
                         require ("./config.php");
+                        if (isset($_POST['from_date']) && isset($_POST['to_date'])) {
+                  $from_date = $_POST['from_date'];
+                  $to_date = $_POST['to_date'];
+
+                  $filter_dek = ("SELECT SUM(harga) AS total FROM barang WHERE tanggal BETWEEN '$from_date' AND '$to_date'");
+                  $result   = mysqli_query($koneksi, $filter_dek);
+
+                }else{
+
                           $query = "SELECT SUM(harga) AS total FROM barang WHERE DATE(tanggal)=DATE(curdate()) AND MONTH(tanggal)=MONTH(curdate()) AND YEAR(tanggal)=YEAR(curdate())";
                           $result = mysqli_query($koneksi,$query);
+                  }
+
 
                         while ($row = mysqli_fetch_array($result)) {
                           $total = $row['total'];

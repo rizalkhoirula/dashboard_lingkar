@@ -345,7 +345,6 @@ if (isset($_POST['from_date']) && isset($_POST['to_date'])) {
                         }
                           $no = 0;
                           while ($row = mysqli_fetch_array($result)) {
-                            $KaryawanId = $row['idkaryawan'];
                             $AbsenId = $row['id'];
                             $AbsenNama = $row['nama'];
                             $AbsenFoto = $row['foto'];
@@ -361,7 +360,6 @@ $no++;
   
                           <td><?php echo $no; ?></td>
                           <td>
-
 <span class="avatar avatar-sm mt-2">
   <img src="./foto/user/<?php echo $AbsenFoto; ?>" alt="..." class="avatar-img rounded-circle">
 </span>
