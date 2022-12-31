@@ -112,7 +112,7 @@ if( !isset($_SESSION["login"])){
             </a>
             <ul class="collapse list-unstyled pl-4 w-100" id="forms">
               <li class="nav-item">
-                <a class="nav-link pl-3" href="./makanan.php"><span class="ml-1 item-text">Menu</span></a>
+                <a class="nav-link pl-3" href="./menu.php"><span class="ml-1 item-text">Menu</span></a>
               </li>
             </ul>
           </li>
@@ -133,7 +133,7 @@ if( !isset($_SESSION["login"])){
                 <span class="ml-3 item-text">Income</span>
               </a>
               <ul class="collapse list-unstyled pl-4 w-100" id="contact">
-                <a class="nav-link pl-3" href="./income_harian.php"><span class="ml-1">Penghasilan Perhari</span></a>
+                <a class="nav-link pl-3" href="./penghasilan.php"><span class="ml-1">Penghasilan Perhari</span></a>
               </ul>
             </li>
           <li class="nav-item dropdown">
@@ -201,7 +201,7 @@ if( !isset($_SESSION["login"])){
 
             <!-- Pop up Add Income -->
             <button type="button" class="btn mb-2 btn-success" data-toggle="modal" data-target="#verticalModal">Add Income</button>
-            <a href="report.php" target=”_blank” class="btn mb-2 btn-primary" id="pp"> Report</a>  
+            <a href="export_income.php" target=”_blank” class="btn mb-2 btn-primary" id="pp"> Report</a>  
             <style>
                 #pp{
                     float: right;
@@ -218,7 +218,7 @@ if( !isset($_SESSION["login"])){
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <form action="income_harian.php" method="post" enctype="multipart/form-data">
+                  <form action="penghasilan.php" method="post" enctype="multipart/form-data">
                     <div class="modal-body-add">
 
 
@@ -310,7 +310,7 @@ $no++;
                                   <span aria-hidden="true">&times;</span>
                                 </button>
                               </div>
-                              <form action="income_harian.php?id=<?= $row['id'] ?>" method="post" enctype="multipart/form-data">
+                              <form action="penghasilan.php?id=<?= $row['id'] ?>" method="post" enctype="multipart/form-data">
                                 <div class="modal-body-add">
 
 
@@ -360,7 +360,7 @@ $no++;
                                   <span aria-hidden="true">&times;</span>
                                 </button>
                               </div>
-                              <form action="income_harian.php?id=<?= $row['id'] ?>" method="post">
+                              <form action="penghasilan.php?id=<?= $row['id'] ?>" method="post">
                                 <div class="modal-body">
                                   <div class="row">
 
@@ -566,14 +566,14 @@ if (isset($_POST['add-income'])) {
     echo "<script>
   	Swal.fire({title: 'Data Berhasil Disimpan',text: '',icon: 'success',confirmButtonText: 'OK'
   	}).then((result) => {if (result.value)
-  		{window.location = 'income_harian.php';}
+  		{window.location = 'penghasilan.php';}
   	})</script>";
   } else {
 
     echo "<script>
   		Swal.fire({title: 'Data Gagal Disimpan',text: '',icon: 'error',confirmButtonText: 'OK'
   		}).then((result) => {if (result.value)
-  			{window.location = 'income_harian.php';}
+  			{window.location = 'penghasilan.php';}
   		})</script>";
   }
   // if($query)
@@ -603,13 +603,13 @@ if (isset($_POST['submit'])) {
       echo "<script>
             Swal.fire({title: 'Data Berhasil Diubah',text: '',icon: 'success',confirmButtonText: 'OK'
             }).then((result) => {if (result.value)
-                {window.location = 'income_harian.php';}
+                {window.location = 'penghasilan.php';}
             })</script>";
   } else {
     echo "<script>
             Swal.fire({title: 'Data Berhasil Diubah',text: '',icon: 'success',confirmButtonText: 'OK'
             }).then((result) => {if (result.value)
-                {window.location = 'income_harian.php';}
+                {window.location = 'penghasilan.php';}
             })</script>";
   }
 }
@@ -628,13 +628,13 @@ if (isset($_POST['delete'])) {
     echo "<script>
     Swal.fire({title: 'Data Berhasil Dihapus',text: '',icon: 'success',confirmButtonText: 'OK'
     }).then((result) => {if (result.value)
-        {window.location = 'income_harian.php';}
+        {window.location = 'penghasilan.php';}
     })</script>";
   } else {
     echo "<script>
     Swal.fire({title: 'Data Gagal Dihapus',text: '',icon: 'error',confirmButtonText: 'OK'
     }).then((result) => {if (result.value)
-        {window.location = 'income_harian.php';}
+        {window.location = 'penghasilan.php';}
     })</script>";
   }
 }

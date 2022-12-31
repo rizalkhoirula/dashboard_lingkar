@@ -118,7 +118,7 @@ if (isset($_POST['submit-reservation'])) {
                             <h4>LINGKAR ANGKRINGAN DAN CAFE</h4>
                             <h6>THE BEST EXPERIENCE</h6>
                             <div class="main-white-button scroll-to-section">
-                                <a href="#reservation">Make A Reservation</a>
+                                <a href="https://wa.me/6285156154087?text=Halo%20ka%2C%20saya%20mau%20reservasi%0A%0Anama%20%3A%20%0Ajam%20%3A%0Atanggal%20%3A%20%0AJumlah%20orang%20%3A%20%28kira%20kira%29%0Acatatan%20untuk%20kita%20%3A%20%0A%0ATerimakasih%20sudah%20percaya%20dan%20memilih%20kami%20menjadi%20tempat%20nongkrong%2C%20ngerjain%20tugas%20dan%20lain%20lain ">Make A Reservation</a>
                             </div>
                         </div>
                     </div>
@@ -665,7 +665,7 @@ if (isset($_POST['submit-reservation'])) {
                                 <div class="phone">
                                     <i class="fa fa-phone"></i>
                                     <h4>Whatsapp</h4>
-                                    <span><a href="https://wa.me/6287873174354">087873174354</a></span>
+                                    <span><a href="https://wa.me/6285156154087?text=Halo%20ka%2C%20saya%20mau%20reservasi%0A%0Anama%20%3A%20%0Ajam%20%3A%0Atanggal%20%3A%20%0AJumlah%20orang%20%3A%20%28kira%20kira%29%0Acatatan%20untuk%20kita%20%3A%20%0A%0ATerimakasih%20sudah%20percaya%20dan%20memilih%20kami%20menjadi%20tempat%20nongkrong%2C%20ngerjain%20tugas%20dan%20lain%20lain ">087873174354</a></span>
                                 </div>
                             </div>
                             <div class="col-lg-6">

@@ -114,7 +114,7 @@ if( !isset($_SESSION["login"])){
             </a>
             <ul class="collapse list-unstyled pl-4 w-100" id="forms">
               <li class="nav-item">
-                <a class="nav-link pl-3" href="./makanan.php"><span class="ml-1 item-text">Menu</span></a>
+                <a class="nav-link pl-3" href="./menu.php"><span class="ml-1 item-text">Menu</span></a>
               </li>
             </ul>
           </li>
@@ -135,7 +135,7 @@ if( !isset($_SESSION["login"])){
                 <span class="ml-3 item-text">Income</span>
               </a>
               <ul class="collapse list-unstyled pl-4 w-100" id="contact">
-                <a class="nav-link pl-3" href="./income_harian.php"><span class="ml-1">Penghasilan Perhari</span></a>
+                <a class="nav-link pl-3" href="./penghasilan.php"><span class="ml-1">Penghasilan Perhari</span></a>
               </ul>
             </li>
           <li class="nav-item dropdown">
