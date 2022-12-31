@@ -112,10 +112,7 @@ if( !isset($_SESSION["login"])){
             </a>
             <ul class="collapse list-unstyled pl-4 w-100" id="forms">
               <li class="nav-item">
-                <a class="nav-link pl-3" href="./makanan.php"><span class="ml-1 item-text">Makanan</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link pl-3" href="./minuman.php"><span class="ml-1 item-text">Minuman</span></a>
+                <a class="nav-link pl-3" href="./makanan.php"><span class="ml-1 item-text">Menu</span></a>
               </li>
             </ul>
           </li>
