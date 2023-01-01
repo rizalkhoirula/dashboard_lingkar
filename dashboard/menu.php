@@ -348,7 +348,7 @@ $no++;
                                   <div class="form-group">
                                       <label for="exampleFormControlSelect1">Category</label>
                                       <select class="form-control" name="edit-category" required>
-                                      <option>Pilih Jenis Lagi</option>
+                                      <option value="<?php echo $category; ?>"> <?php echo $category; ?> </option>
                                                   <option value="Makanan">Makanan</option>
                                                   <option value="Minuman">Minuman</option>
                                                   <option value="Snack">Snack</option>
@@ -356,13 +356,13 @@ $no++;
                                     </div>
                                   <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Harga</label>
-                                    <input class="form-control" name="edit-harga" type="text" value="<?php echo $harga; ?>" placeholder="Enter Harga" oninput="this.value = this.value.replace(/[^\d]+/, '').replace(/(\..*?)\..*/g, '$1');" maxlength="10" name="edit-harga" id="edit-harga" />
+                                    <input class="form-control" name="edit-harga" type="text" value="<?php echo $harga; ?>" placeholder="Enter Harga" oninput="this.value = sthis.value.replace(/[^\d]+/, '').replace(/(\..*?)\..*/g, '$1');" maxlength="10"  id="edit-harga" />
 
                                   </div>
                                 </div>
                                 <div class="modal-footer">
                                   <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal" >Close</button>
-                                  <button class="btn mb-2 btn-primary" type="submit" name="submit">Edit</button>
+                                  <button class="btn mb-2 btn-primary" type="submit" name="edit-menu">Edit</button>
                                 </div>
                               </form>
 
@@ -632,17 +632,29 @@ $file_tmp = $_FILES['edit-foto']['tmp_name'];
 move_uploaded_file($file_tmp, './foto/menu/' . $editfoto);
 
 
-if (isset($_POST['submit'])) {
-  if (isset($_POST['submit'])) {
+if (isset($_POST['edit-menu'])) {
+  if (isset($_POST['edit-menu'])) {
     if ($editfoto == "") {
-      $sql = mysqli_query($koneksi, "UPDATE 'menu' SET nama='$editnama', category ='$editcategory', harga ='$editharga' WHERE id='$editid'");
+      $sql = mysqli_query($koneksi, "UPDATE `menu` SET nama='$editnama', category='$editcategory', harga = '$editharga' WHERE id='$_GET[id]'");
       echo "<script>
             Swal.fire({title: 'Data Berhasil Diubah',text: '',icon: 'success',confirmButtonText: 'OK'
             }).then((result) => {if (result.value)
                 {window.location = 'menu.php';}
             })</script>";
     } else {
-      $sql = mysqli_query($koneksi, "UPDATE 'menu' SET nama='$editnama', foto='$editfoto', category ='$editcategory', harga ='$editharga' WHERE id='$editid'");
+
+    
+        $hapusfoto = "select foto as fotomenu from menu where id = '$_GET[id]'";
+        $result = mysqli_query($koneksi, $hapusfoto);
+        $row = mysqli_fetch_array($result, MYSQLI_BOTH);
+
+        $menufoto = $row['fotomenu'];
+        if (file_exists("./foto/menu/$menufoto")){
+            unlink("./foto/menu/$menufoto");
+        }
+
+
+      $sql = mysqli_query($koneksi, "UPDATE `menu` SET nama='$editnama', foto='$editfoto', category='$editcategory', harga = '$editharga' WHERE id='$_GET[id]'");
       echo "<script>
             Swal.fire({title: 'Data Berhasil Diubah',text: '',icon: 'success',confirmButtonText: 'OK'
             }).then((result) => {if (result.value)
@@ -651,7 +663,7 @@ if (isset($_POST['submit'])) {
     }
   } else {
     echo "<script>
-            Swal.fire({title: 'Data Berhasil Diubah',text: '',icon: 'success',confirmButtonText: 'OK'
+            Swal.fire({title: 'Data Gagal Diubah',text: '',icon: 'success',confirmButtonText: 'OK'
             }).then((result) => {if (result.value)
                 {window.location = 'menu.php';}
             })</script>";
@@ -664,6 +676,14 @@ error_reporting(0);
 
 $did = $_GET['id'];
 if (isset($_POST['delete'])) {
+
+       $hapusfoto = "select foto as fotomenu from menu where id = '$editid'";
+        $result = mysqli_query($koneksi, $hapusfoto);
+        $row = mysqli_fetch_array($result, MYSQLI_BOTH);
+
+        $menufoto = $row['fotomenu'];
+            unlink("./foto/menu/$menufoto");
+        
 
   $querydel = "DELETE FROM menu WHERE id = '$did'";
   $result = mysqli_query($koneksi, $querydel);
