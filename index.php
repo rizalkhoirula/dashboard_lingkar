@@ -572,6 +572,7 @@ if (isset($_POST['submit-reservation'])) {
                                         </div>
                                     </div>
                                 </div>
+                                
                             </article>   
                         </section>
                     </div>
@@ -580,6 +581,9 @@ if (isset($_POST['submit-reservation'])) {
         </div>
     </div>
 </section>
+<div class="main-white-button scroll-to-section" style="text-align: center;">
+                                <a href="allmenu.php">View All Menu</a>
+                            </div>
 <!-- ** Chefs Area Ends ** --> 
 
     <!-- ** Chefs Area Starts ** -->
