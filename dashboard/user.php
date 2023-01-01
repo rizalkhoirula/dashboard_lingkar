@@ -352,8 +352,7 @@ if( !isset($_SESSION["login"])){
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <?php
+                        <?php
                           $query = "SELECT * FROM user";
                           $result = mysqli_query($koneksi, $query);
                           $noUrut = 0;
@@ -371,6 +370,8 @@ if( !isset($_SESSION["login"])){
 
 $noUrut++;
                           ?>
+                        <tr>
+                          
                           
                           <td><?php echo $noUrut; ?></td>
                           <td><?php echo $namalengkap; ?></td>

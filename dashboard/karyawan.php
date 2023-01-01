@@ -282,10 +282,8 @@ if( !isset($_SESSION["login"])){
                           <th>Action</th>
                         </tr>
                       </thead>
-                      <tbody>
-                        <tr>
-                          
-                          <?php
+                      <tbody> 
+                        <?php
                           $query = "SELECT * FROM karyawan";
                           $result = mysqli_query($koneksi, $query);
                           $no = 0;
@@ -298,6 +296,9 @@ if( !isset($_SESSION["login"])){
 
 $no++;
                           ?>
+                        <tr>
+                          
+                         
                           <td><?php echo $no; ?></td>
                             <td><?php echo $userName; ?></td>
                             <td>

@@ -274,8 +274,7 @@ if( !isset($_SESSION["login"])){
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <?php
+                        <?php
                           $query = "SELECT * FROM income";
                           $result = mysqli_query($koneksi, $query);
                           $no = 0;
@@ -285,6 +284,8 @@ if( !isset($_SESSION["login"])){
                             $jumlah = $row['jumlah'];
 $no++;
                           ?>
+                        <tr>
+                          
                           <td><?php echo $no; ?></td>
                             <td><?php echo $userName; ?></td>
                             <td><?php echo $tgl; ?></td>
