@@ -115,7 +115,7 @@ if (isset($_POST['submit-reservation'])) {
                 <div class="col-lg-4">
                     <div class="left-content">
                         <div class="inner-content">
-                            <h4>LINGKAR ANGKRINGAN DAN CAFE</h4>
+                            <h4>Lingkar Angkringan dan Cafe</h4>
                             <h6>THE BEST EXPERIENCE</h6>
                             <div class="main-white-button scroll-to-section">
                                 <a href="https://wa.me/6285156154087?text=Halo%20ka%2C%20saya%20mau%20reservasi%0A%0Anama%20%3A%20%0Ajam%20%3A%0Atanggal%20%3A%20%0AJumlah%20orang%20%3A%20%28kira%20kira%29%0Acatatan%20untuk%20kita%20%3A%20%0A%0ATerimakasih%20sudah%20percaya%20dan%20memilih%20kami%20menjadi%20tempat%20nongkrong%2C%20ngerjain%20tugas%20dan%20lain%20lain ">Make A Reservation</a>
@@ -618,8 +618,8 @@ if (isset($_POST['submit-reservation'])) {
                 <div class="col-lg-4">
                     <div class="chef-item">
                         <div class="thumb">
-                            <div class="overlay"></div>
-                            <!--<ul class="social-icons">
+                            <!--<div class="overlay"></div>
+                            <ul class="social-icons">
                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                                 <li><a href="https://www.instagram.com/gesthi.rh"><i class="fa fa-instagram"></i></a></li>
@@ -682,39 +682,39 @@ if (isset($_POST['submit-reservation'])) {
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <!-- <div class="col-lg-6">
                     <div class="contact-form">
                         <form id="contact" action="" method="post">
                           <div class="row">
                             <div class="col-lg-12">
                                 <h4>Form Reservation</h4>
                             </div>
-                            <!-- <div class="col-lg-6 col-sm-12">
+                            <div class="col-lg-6 col-sm-12">
                               <fieldset>
                                 <input name="name" type="text" id="name" placeholder="Your Name*" required="">
                               </fieldset>
                             </div> -->
-                            <div class="col-lg-6 col-sm-12">
+                            <!--<div class="col-lg-6 col-sm-12">
                                 <fieldset>
                                   <input name="name" type="text" id="name" placeholder="Your Name*">
                                 </fieldset>
                               </div>
-                            <!-- <div class="col-lg-6 col-sm-12">
+                             <div class="col-lg-6 col-sm-12">
                               <fieldset>
                                 <input name="phone" type="text" id="phone" placeholder="Phone Number*" required="">
                             </fieldset>
                             </div> -->
-                            <div class="col-lg-6 col-sm-12">
+                            <!--<div class="col-lg-6 col-sm-12">
                                 <fieldset>
                                   <input name="phone" type="text" id="phone" placeholder="Phone Number*">
                               </fieldset>
                               </div>
-                            <!-- <div class="col-lg-6 col-sm-12">
+                             <div class="col-lg-6 col-sm-12">
                               <fieldset>
                                 <input name="time" type="text" id="time" placeholder="Time" required="">
                               </fieldset>
                             </div> -->
-                            <div class="col-lg-6 col-sm-12">
+                            <!--<div class="col-lg-6 col-sm-12">
                                 <fieldset>
                                   <input name="time" type="text" id="time" placeholder="Time">
                                 </fieldset>
@@ -757,27 +757,27 @@ if (isset($_POST['submit-reservation'])) {
                                 </select>
                               </fieldset>
                             </div>
-                            <!-- <div class="col-lg-12">
+                             <div class="col-lg-12">
                               <fieldset>
                                 <textarea name="message" rows="6" id="message" placeholder="NOTE" required=""></textarea>
                               </fieldset>
                             </div> -->
-                            <div class="col-lg-12">
+                            <!--<div class="col-lg-12">
                                 <fieldset>
                                   <textarea name="message" rows="6" id="message" placeholder="NOTE"></textarea>
                                 </fieldset>
                               </div>
-                            <!-- <div class="col-lg-12">
+                             <div class="col-lg-12">
                               <fieldset>
                                <a href="wa.me/6281230147253"><button class="main-button-icon">Send to our whatsapp</button>
                               </fieldset>
                             </div> -->
-                            <div class="col-lg-12">
+                            <!--<div class="col-lg-12">
                                 <a href=”https://web.whatsapp.com/send?phone=6281230147253&text=Hallo admin, ini saya coba kode wa"><button>whatsapp</button></a>
                             </div>
                             
                           </div>
-                        </form>
+                        </form>-->
                     </div>
                 </div>
             </div>
