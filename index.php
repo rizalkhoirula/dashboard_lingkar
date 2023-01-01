@@ -314,7 +314,7 @@ if (isset($_POST['submit-reservation'])) {
                                                     <div class="tab-item">
                                                         <img src="assets/images/makanan1.jpg" alt="">
                                                             <h4>Nasi Bakar</h4>
-                                                            <p>Isian varian: Ayam, Tuna <br> <br> </p>
+                                                            <p>Isian varian: Ayam, Tuna <br> Pedas dan tidak pedas </p>
                                                             <div class="price">
                                                                 <h6>6k</h6>
                                                             </div>
@@ -350,7 +350,7 @@ if (isset($_POST['submit-reservation'])) {
                                                         <div class="tab-item">
                                                             <img src="assets/images/makanan6.jpg" alt="">
                                                             <h4>Bihun goreng</h4>
-                                                            <p>Bisa request tingkat kepedesan. <br><br> </p>
+                                                            <p>Bisa request tingkat kepedesan. </p>
                                                             <div class="price">
                                                                 <h6>10k</h6>
                                                             </div>
