@@ -298,6 +298,7 @@ if (isset($_POST['submit-reservation'])) {
                                       <li><a href='#tabs-1'><img src="assets/images/food-removebg-preview.png" alt="">Food</a></li>
                                       <li><a href='#tabs-2'><img src="assets/images/snack-removebg-preview.png" alt="">Snack</a></a></li>
                                       <li><a href='#tabs-3'><img src="assets/images/drink-removebg-preview.png" alt="">Drink</a></a></li>
+                                      <li><a href='#tabs-4'><img src="assets/images/paket-removebg-preview (1) (1).png" alt="">All Menu</a></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -436,7 +437,7 @@ if (isset($_POST['submit-reservation'])) {
                                                     <div class="tab-item">
                                                         <img src="assets/images/snack5.jpg" alt="">
                                                         <h4>Tahu crispy</h4>
-                                                        <p>Disajikan dengan saus sambal.</p>
+                                                        <p>Varian : crispy & tahu walik <br> Disajikan dengan saus sambal.</p>
                                                         <div class="price">
                                                             <h6>6k</h6>
                                                         </div>
@@ -466,7 +467,7 @@ if (isset($_POST['submit-reservation'])) {
                                                     <div class="tab-item">
                                                         <img src="assets/images/drink1.jpg" alt="">
                                                         <h4>Kopi-kopian</h4>
-                                                        <p>Varian : Kopi Hitam dan kopi susu.</p>
+                                                        <p>Varian : Kopi Hitam <br> kopi susu.</p>
                                                         <div class="price">
                                                             <h6>4k-5k</h6>
                                                         </div>
@@ -486,7 +487,7 @@ if (isset($_POST['submit-reservation'])) {
                                                     <div class="tab-item">
                                                         <img src="assets/images/drink3.jpg" alt="">
                                                         <h4>Minuman Jahe</h4>
-                                                        <p>Varian : Wedang jahe dan susu jahe.</p>
+                                                        <p>Varian : Wedang jahe <br> susu jahe.</p>
                                                         <div class="price">
                                                             <h6>4k-5k</h6>
                                                         </div>
@@ -506,7 +507,7 @@ if (isset($_POST['submit-reservation'])) {
                                                     <div class="tab-item">
                                                         <img src="assets/images/drink5.jpg" alt="">
                                                         <h4>Minuman kemasan</h4>
-                                                        <p>Varian: Nutrisari, beng-beng, chocolatos coklat/matcha, cappucino, teh tarik, dan milo.</p>
+                                                        <p>Varian:Nutrisari,beng-beng,chocolatos coklat/matcha,cappucino,teh tarik,milo.</p>
                                                         <div class="price">
                                                             <h6>5k</h6>
                                                         </div>
@@ -552,7 +553,7 @@ if (isset($_POST['submit-reservation'])) {
                                                     <div class="tab-item">
                                                     <img src="assets/images/drink9.jpg" alt="">
                                                         <h4>Jus</h4>
-                                                        <p>arian: Melon, apel dan jambu.</p>
+                                                        <p>arian: Melon, apel <br> dan jambu.</p>
                                                         <div class="price">
                                                             <h6>6k</h6>
                                                         </div>
@@ -579,8 +580,86 @@ if (isset($_POST['submit-reservation'])) {
                 </div>
             </div>
         </div>
-    </div>
+    </div><!--<div class="col-lg-12">
+                        <section class='tabs-content'>-->
+                            <article id='tabs-4'>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="row">
+                                            <div class="left-list">
+                                                <div class="col-lg-12">
+                                                    <div class="tab-item">
+                                                        <img src="assets/images/makanan1.jpg" alt="">
+                                                            <h4>Nasi Bakar</h4>
+                                                            <p>Isian varian: Ayam, Tuna <br> Pedas dan tidak pedas </p>
+                                                            <div class="price">
+                                                                <h6>6k</h6>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <div class="tab-item">
+                                                            <img src="assets/images/makanan2.jpg" alt="">
+                                                            <h4>Mie</h4>
+                                                            <p>Varian: Mie goreng, mie kuah, mie nyemek. Bisa request tingkat kepedasan.</p>
+                                                            <div class="price">
+                                                                <h6>10k</h6>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <div class="tab-item">
+                                                            <img src="assets/images/makanan3.jpg" alt="">
+                                                            <h4>Nasi goreng</h4>
+                                                            <p>Bisa request tingkat kepedesan. <br> </p>
+                                                            <div class="price">
+                                                                <h6>10k</h6>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="row">
+                                                <div class="right-list">
+                                                    <div class="col-lg-12">
+                                                        <div class="tab-item">
+                                                            <img src="assets/images/makanan6.jpg" alt="">
+                                                            <h4>Bihun goreng</h4>
+                                                            <p>Bisa request tingkat kepedesan. </p>
+                                                            <div class="price">
+                                                                <h6>10k</h6>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <div class="tab-item">
+                                                            <img src="assets/images/makanan4.jpg" alt="">
+                                                            <h4>Roti bakar 1 rasa</h4>
+                                                            <p>Varian: Keju, Coklat, Blueberry, strawberry, nanas.</p>
+                                                            <div class="price">
+                                                                <h6>6k</h6>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <div class="tab-item">
+                                                            <img src="assets/images/makanan5.jpg" alt="">
+                                                            <h4>Roti bakar 2 rasa</h4>
+                                                            <p>Varian: Keju, Coklat, Blueberry, strawberry, nanas.</p>
+                                                            <div class="price">
+                                                                <h6>8k</h6>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </article>
 </section>
+
 <div class="main-white-button scroll-to-section" style="text-align: center;">
                                 <a href="allmenu.php">View All Menu</a>
                             </div>
