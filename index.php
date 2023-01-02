@@ -949,102 +949,30 @@ if (isset($_POST['submit-reservation'])) {
                         </div>
                     </div>
                 </div>
-                <!-- <div class="col-lg-6">
+                <div class="col-lg-6">
                     <div class="contact-form">
                         <form id="contact" action="" method="post">
                           <div class="row">
                             <div class="col-lg-12">
-                                <h4>Form Reservation</h4>
+                                <h4>Template Reservation</h4>
                             </div>
                             <div class="col-lg-6 col-sm-12">
-                              <fieldset>
-                                <input name="name" type="text" id="name" placeholder="Your Name*" required="">
-                              </fieldset>
-                            </div> -->
-                            <!--<div class="col-lg-6 col-sm-12">
-                                <fieldset>
-                                  <input name="name" type="text" id="name" placeholder="Your Name*">
-                                </fieldset>
-                              </div>
-                             <div class="col-lg-6 col-sm-12">
-                              <fieldset>
-                                <input name="phone" type="text" id="phone" placeholder="Phone Number*" required="">
-                            </fieldset>
-                            </div> -->
-                            <!--<div class="col-lg-6 col-sm-12">
-                                <fieldset>
-                                  <input name="phone" type="text" id="phone" placeholder="Phone Number*">
-                              </fieldset>
-                              </div>
-                             <div class="col-lg-6 col-sm-12">
-                              <fieldset>
-                                <input name="time" type="text" id="time" placeholder="Time" required="">
-                              </fieldset>
-                            </div> -->
-                            <!--<div class="col-lg-6 col-sm-12">
-                                <fieldset>
-                                  <input name="time" type="text" id="time" placeholder="Time">
-                                </fieldset>
-                              </div>
-                            <div class="col-md-6 col-sm-12">
-                              <fieldset>
-                                <select value="number-guests" name="number-guests" id="number-guests">
-                                    <option value="number-guests">Participants</option>
-                                    <option name="1" id="1">1-10</option>
-                                    <option name="2" id="2">< 20</option>
-                                    <option name="3" id="3">< 30</option>
-                                    <option name="4" id="4">< 40</option>
-                                    <option name="5" id="5">< 50</option>
-                                    <option name="6" id="6">< 60</option>
-                                    <option name="7" id="7">< 70</option>
-                                    <option name="8" id="8">< 80</option>
-                                    <option name="9" id="9">< 90</option>
-                                    <option name="10" id="10">< 100</option>
-                                    <option name="11" id="11">< 200</option>
-                                </select>
-                              </fieldset>
-                            </div>
-                            <div class="col-lg-6">
-                                <div id="filterDate2">    
-                                  <div class="input-group date" data-date-format="dd/mm/yyyy">
-                                    <input  name="date" id="date" type="text" class="form-control" placeholder="dd/mm/yyyy">
-                                    <div class="input-group-addon" >
-                                      <span class="glyphicon glyphicon-th"></span>
-                                    </div>
-                                  </div>
-                                </div>   
-                            </div>
-                            <div class="col-md-6 col-sm-12">
-                              <fieldset>
-                                <select value="time" name="time" id="time">
-                                    <option value="time">Booked for</option>
-                                    <option name="Breakfast" id="Breakfast">Meeting</option>
-                                    <option name="Lunch" id="Lunch">Party</option>
-                                    <option name="Dinner" id="Dinner">Dinner</option>
-                                </select>
-                              </fieldset>
                             </div>
                              <div class="col-lg-12">
-                              <fieldset>
-                                <textarea name="message" rows="6" id="message" placeholder="NOTE" required=""></textarea>
-                              </fieldset>
-                            </div> -->
-                            <!--<div class="col-lg-12">
-                                <fieldset>
-                                  <textarea name="message" rows="6" id="message" placeholder="NOTE"></textarea>
-                                </fieldset>
-                              </div>
-                             <div class="col-lg-12">
-                              <fieldset>
-                               <a href="wa.me/6281230147253"><button class="main-button-icon">Send to our whatsapp</button>
-                              </fieldset>
-                            </div> -->
-                            <!--<div class="col-lg-12">
-                                <a href=”https://web.whatsapp.com/send?phone=6281230147253&text=Hallo admin, ini saya coba kode wa"><button>whatsapp</button></a>
-                            </div>
-                            
+                             <div class="col-lg-4">
+                             <style type="text/css">
+                            .imgcenter {
+                                display: block;
+                                margin: 0px auto;
+                                width: 420px;
+                                height: 674px;
+                            }
+                            </style>
+                            <img class="imgcenter" src="assets/images/reservasibaru.jpg" />
+                </div>
+                            </div>         
                           </div>
-                        </form>-->
+                        </form>
                     </div>
                 </div>
             </div>
