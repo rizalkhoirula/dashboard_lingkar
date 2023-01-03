@@ -1,7 +1,7 @@
 <?php
 $server = "localhost";
 $username = "root";
-$password = "root";
+$password = "";
 $db = "db_lingkar";
 $koneksi = mysqli_connect($server, $username, $password, $db);
 
