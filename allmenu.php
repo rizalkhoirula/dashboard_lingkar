@@ -178,9 +178,7 @@ $no++;
 
                                     <!-- <a href="menu.php?id=<?= $row['id'] ?>" class="btn btn-danger btn-sm ms-auto">Delete</a> -->
 
-                                    <button class="btn btn-danger btn-sm ms-auto" name="delete">Delete</button>
-                                    <button class="btn btn-success btn-sm ms-auto" data-dismiss="modal">Close</button>
-                                    <!-- <button class="btn btn-danger btn-sm ms-auto" href="hapus_menu.php?id=<?php echo $row['id']; ?>" data-close-delete>Close</button> -->
+                                    
                                   </div>
                               </form>
                             </div>
