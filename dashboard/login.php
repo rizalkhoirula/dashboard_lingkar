@@ -107,7 +107,7 @@ if (isset($_POST['submit'])) {
           <span>Password</span>
           <input type="text" name="txt_pass">
         </label>
-        <button type="submit" class="submit" name="submit">Sign Up Now</button>
+        <button type="submit" class="submit" name="submit" disabled>Sign Up Now</button>
        </div>
       </form>
     </div>
