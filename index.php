@@ -721,35 +721,8 @@ if (isset($_POST['submit-reservation'])) {
         </div>
     </section>
     <!-- ** Reservation Area Ends ** -->
-    <!-- Pop Up Lihat Foto  -->
-    <div class="modal fade" id="modal-foto<?= $row['id'] ?>" tabdashboard="-1" role="dialog" aria-labelledby="verticalModalTitle" aria-hidden="true">
-                          <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h5 class="modal-title" id="verticalModalTitle">Lihat Foto</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
-                              </div>
-                                <div class="modal-body">
-                                  <div class="form-group align-middle text-center">
-                                <img src="assets/images/reservasi.jpg<?php echo $foto ?>" alt="Foto Menu" class="w-100 border-radius-lg shadow-sm" />
-                              </div>
-
-
-                                  <div class="modal-footer">
-
-
-                                    <!-- <a href="menu.php?id=<?= $row['id'] ?>" class="btn btn-danger btn-sm ms-auto">Delete</a> -->
-
-                                    
-                                  </div>
-                              </form>
-                            </div>
-                          </div>
-                        </div>
-
-                         <!-- End Pop Up Lihat Foto -->
+    
+                         
     <!-- ** Footer Start ** -->
     <footer>
         <div class="container">
@@ -789,6 +762,37 @@ if (isset($_POST['submit-reservation'])) {
             </div>
         </div>
     </footer>
+
+
+    <!-- Pop Up Lihat Foto  -->
+    <div class="modal fade" id="modal-foto<?= $row['id'] ?>" tabdashboard="-1" role="dialog" aria-labelledby="verticalModalTitle" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="verticalModalTitle">Lihat Foto</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                                <div class="modal-body">
+                                  <div class="form-group align-middle text-center">
+                                <img src="assets/images/reservasi.jpg<?php echo $foto ?>" alt="Foto Menu" class="w-100 border-radius-lg shadow-sm" />
+                              </div>
+
+
+                                  <div class="modal-footer">
+
+
+                                    <!-- <a href="menu.php?id=<?= $row['id'] ?>" class="btn btn-danger btn-sm ms-auto">Delete</a> -->
+
+                                    
+                                  </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+
+                         <!-- End Pop Up Lihat Foto -->
 
     <!-- jQuery -->
     <script src="assets/js/jquery-2.1.0.min.js"></script>
