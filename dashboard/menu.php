@@ -278,7 +278,7 @@ if( !isset($_SESSION["login"])){
                         <tr>
                           <th>No</th>
                           <th>Nama</th>
-                          <th>Photo profile</th>
+                          <th>Photo</th>
                           <th>Category</th>
                           <th>Harga</th>
                           <th>Action</th>
@@ -302,7 +302,7 @@ $no++;
                             <td><?php echo $Namamenu; ?></td>
                             <td>
 
-                              <button class="btn btn-primary btn-sm ms-auto" data-toggle="modal" data-target="#modal-foto<?php echo $row['id'] ?>">Lihat</button>
+                              <button class="btn btn-warning btn-sm ms-auto" data-toggle="modal" data-target="#modal-foto<?php echo $row['id'] ?>">Lihat</button>
 
                             </td>
                             <td><?php echo $category; ?></td>
@@ -375,7 +375,7 @@ $no++;
                           <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                               <div class="modal-header">
-                                <h5 class="modal-title" id="verticalModalTitle">Warning!</h5>
+                                <h5 class="modal-title" id="verticalModalTitle">Lihat Foto</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
                                 </button>
