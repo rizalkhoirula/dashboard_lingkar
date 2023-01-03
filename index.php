@@ -687,14 +687,42 @@ if (isset($_POST['submit-reservation'])) {
                 </div>
                 <div class="col-lg-6">
                     <div class="contact-form">
-                        <form id="contact" action="" method="post">
+                       
                           <div class="row">
                             <div class="col-lg-12">
-                                <h4>Template Reservation</h4>
-                                <button class="btn btn-warning btn-sm ms-auto" data-toggle="modal" data-target="#modal-foto<?php echo $row['id'] ?>">Lihat</button>
+                                <br>
+                                <br><br><br><br>
+                                <h4 class="pp">Template Reservation</h4>
+                                <br>
+                                <br>
+                                <br>
+                                <style>
+                                    .pp{
+                                        color: white;
+                                        text-align: center;
+                                    }
+                                </style>
+                                <button class="btn btn-warning btn-sm ms-auto" data-toggle="modal" data-target="#modal-foto<?php echo $row['id'] ?>">Klik disini untuk melihat template reservasi!</button>
+                                  </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
 
-                                 <!-- Pop Up Lihat Foto  -->
-                        <div class="modal fade" id="modal-foto<?= $row['id'] ?>" tabdashboard="-1" role="dialog" aria-labelledby="verticalModalTitle" aria-hidden="true">
+                         <!-- End Pop Up Lihat Foto -->
+                            </div>
+                            <div class="col-lg-6 col-sm-12">
+                            </div>    
+                          </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ** Reservation Area Ends ** -->
+    <!-- Pop Up Lihat Foto  -->
+    <div class="modal fade" id="modal-foto<?= $row['id'] ?>" tabdashboard="-1" role="dialog" aria-labelledby="verticalModalTitle" aria-hidden="true">
                           <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                               <div class="modal-header">
@@ -705,13 +733,9 @@ if (isset($_POST['submit-reservation'])) {
                               </div>
                                 <div class="modal-body">
                                   <div class="form-group align-middle text-center">
-                                <img src="dashboard/foto/menu/<?php echo $foto ?>" alt="Foto Menu" class="w-100 border-radius-lg shadow-sm" />
+                                <img src="assets/images/reservasi.jpg<?php echo $foto ?>" alt="Foto Menu" class="w-100 border-radius-lg shadow-sm" />
                               </div>
-                              <div class="form-group align-middle text-center">
 
-                                <a class='btn btn-warning btn-sm ms-auto' target='_blank' href='dashboard/foto/menu/<?php echo $foto ?>'>Lihat Foto</a>
-
-                              </div>
 
                                   <div class="modal-footer">
 
@@ -726,18 +750,6 @@ if (isset($_POST['submit-reservation'])) {
                         </div>
 
                          <!-- End Pop Up Lihat Foto -->
-                            </div>
-                            <div class="col-lg-6 col-sm-12">
-                            </div>    
-                          </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ** Reservation Area Ends ** -->
-    
     <!-- ** Footer Start ** -->
     <footer>
         <div class="container">
