@@ -1,7 +1,7 @@
 <?php
 require("dashboard/config.php");
 session_start();
-error_reporting(1);
+error_reporting(0);
 
 if (isset($_POST['submit-reservation'])) {
   $userNama = $_POST['txt_nama'];
