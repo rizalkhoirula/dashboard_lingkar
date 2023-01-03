@@ -216,33 +216,25 @@ $no++;
             <div class="row">
                 <div class="col-lg-4 col-xs-12">
                     <div class="right-text-content">
-                        <div class="col-lg-6 right-map">
-                            <div id="map">
-                            
-                              <!-- You can easily copy and paste your own map point from Google Maps -> Share -> Embed a map -->
-                                
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12469.776493332698!2d-80.14036379941481!3d25.907788681148624!2m3!1f357.26927939317244!2f20.870722720054623!3f0!3m2!1i1024!2i768!4f35!3m3!1m2!1s0x88d9add4b4ac788f%3A0xe77469d09480fcdb!2sSunny%20Isles%20Beach!5e1!3m2!1sen!2sth!4v1642869952544!5m2!1sen!2sth" width="50%" height="150px" frameborder="0" style="border:0" allowfullscreen=""></iframe>
-                            </div>
-                        </div>
                             <ul class="social-icons">
-                                <li><a href="https://wa.me/6287873174354"><i class="fa fa-phone"></i></a></li>
+                                <li><a href="https://wa.me/6287873174354?text=silahkan+isi+form+reservasinya+kak+%3A%29+%0D%0A%0D%0Anama+%3A+%0D%0Ajam+%3A%0D%0Atanggal+%3A+%0D%0Ajumlah+orang+%3A+%0D%0Alesehan%2Ftable+%3A+%0D%0Anote+%3A+%0D%0A%0D%0AReservasi+akan+diproses+setelah+pembayaran.+Terima+kasih+sudah+melakukan+pemesanan+di+angkringan+kami+%2C+kami+tunggu+kedatangannya+kak"><i class="fa fa-phone"></i></a></li>
                             <li><a href="https://www.instagram.com/lingkar.cafe_"><i class="fa fa-instagram"></i></a></li>
                             <br>
+                            <p><b> © Copyright
+                        
+                        <br>Lingkar Angkringan dan Cafe</b></p>
                             <p> Cluster Tidar Asri Blok X1/X2 </p>
                             <p> open : 14.00 - 02.00 </p>
                             </ul>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="logo">
-                        <a href="index.html"><img src="assets/images/revisi logo putih 2.png" alt=""></a>
-                    </div>
-                </div>
                 <div class="col-lg-4 col-xs-12">
                     <div class="left-text-content">
-                        <p><b> © Copyright
-                        
-                        <br>Lingkar Angkringan dan Cafe</b></p>
+                    <div class="col-lg-6 left-map">
+                            <div id="map">     
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2967.147366223566!2d113.72266151386259!3d-8.168460184118109!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd695f7d0700c97%3A0x6b8c15e517c5f08a!2sAngkringan%20lingkar!5e1!3m2!1sen!2sid!4v1672647593684!5m2!1sen!2sid"  width="500%" height="150px" frameborder="0" style="border:0" allowfullscreen=""></iframe>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
