@@ -29,8 +29,8 @@ if( !isset($_SESSION["login"])){
             <tr>
                 <th>No</th>
                 <th>Nama</th>
-                <th>Status</th>
-                <th>Keterangan</th>
+                <th>Category</th>
+                <th>Harga</th>
                 
             </tr>
         </thead>
@@ -61,7 +61,7 @@ if( !isset($_SESSION["login"])){
                     <td><?php echo $no ?></td>
                     <td><?php echo $menunama ?></td>
                     <td><?php echo $menucategory ?></td>
-                    <td><?php echo $menuharga ?></td>
+                    <td><?php echo "Rp. ". number_format ($menuharga,0,',','.'); ?></td>
                 </tr>
 
             <?php
