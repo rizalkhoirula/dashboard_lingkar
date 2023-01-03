@@ -403,6 +403,7 @@ $no++;
                             </div>
                           </div>
                         </div>
+                          </div>
 
                          <!-- End Pop Up Lihat Foto -->
 
