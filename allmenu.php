@@ -1,3 +1,8 @@
+<?php
+require ("dashboard/config.php");
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -97,115 +102,115 @@
     </header>
     <!-- ** Header Area End ** -->
 
+<!-- PPPP -->
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+              <!-- Small table -->
+              <center>
+             
+              <div class="col-md-9">
+                <div class="card shadow">
+                  <div class="card-body">
+                    <!-- table -->
+                    <table id="tableku" class="table table-striped table-bordered">
+                      <thead>
+                        <tr>
+                          <th>No</th>
+                          <th>Nama</th>
+                          <th>Photo</th>
+                          <th>Category</th>
+                          <th>Harga</th>
+                          
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <?php
+                          $query = "SELECT * FROM menu";
+                          $result = mysqli_query($koneksi, $query);
+                          $no = 0;
+                          while ($row = mysqli_fetch_array($result)) {
+                            $Namamenu = $row['nama'];
+                            $foto = $row['foto'];
+                            $category = $row['category'];
+                            $harga = $row['harga'];
+
+$no++;
+                          ?>
+                        <tr>
+                          <td><?php echo $no; ?></td>
+                            <td><?php echo $Namamenu; ?></td>
+                            <td>
+
+                              <button class="btn btn-warning btn-sm ms-auto" data-toggle="modal" data-target="#modal-foto<?php echo $row['id'] ?>">Lihat</button>
+
+                            </td>
+                            <td><?php echo $category; ?></td>
+                            <td><?php echo "Rp. ". number_format ($harga,0,',','.'); ?></td>
+                        </tr>
+
+                        <!-- Pop Up Lihat Foto  -->
+                        <div class="modal fade" id="modal-foto<?= $row['id'] ?>" tabdashboard="-1" role="dialog" aria-labelledby="verticalModalTitle" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="verticalModalTitle">Lihat Foto</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                                <div class="modal-body">
+                                  <div class="form-group align-middle text-center">
+                                <img src="dashboard/foto/menu/<?php echo $foto ?>" alt="Foto Menu" class="w-100 border-radius-lg shadow-sm" />
+                              </div>
+                              <div class="form-group align-middle text-center">
+
+                                <a class='btn btn-warning btn-sm ms-auto' target='_blank' href='dashboard/foto/menu/<?php echo $foto ?>'>Lihat Foto</a>
+
+                              </div>
+
+                                  <div class="modal-footer">
 
 
-<!-- ** About Area Starts ** -->
-    <section class="section" id="about">
-        <div class="card shadow-lg mx-4 mt-3">
-      <div class="card-body">
-        <div class="row gx-4">
+                                    <!-- <a href="menu.php?id=<?= $row['id'] ?>" class="btn btn-danger btn-sm ms-auto">Delete</a> -->
 
-          <div class="dropdown col-auto">
-            <form class="" action="" method="post">
-              <button class="btn btn-sm bg-gradient-dark dropdown-toggle mb-1 px-3" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                Sort By
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <button class="dropdown-item" name="namaasc" type="submit"> Nama Asc (A-Z)</button>
-                <button class="dropdown-item" name="namadesc" type="submit"> Nama Desc (Z-A)</button>
-                <button class="dropdown-item" name="totalasc" type="submit">Total Desc (A-Z)</button>
-                <button class="dropdown-item" name="totaldesc" type="submit">Total Asc (Z-A)</button>
-              </ul>
-            </form>
+                                    <button class="btn btn-danger btn-sm ms-auto" name="delete">Delete</button>
+                                    <button class="btn btn-success btn-sm ms-auto" data-dismiss="modal">Close</button>
+                                    <!-- <button class="btn btn-danger btn-sm ms-auto" href="hapus_menu.php?id=<?php echo $row['id']; ?>" data-close-delete>Close</button> -->
+                                  </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
 
-          </div>
+                         <!-- End Pop Up Lihat Foto -->
 
-          <div class="dropdown col-auto">
-            <form class="" action="" method="post">
-              <button class="btn btn-sm bg-gradient-dark dropdown-toggle mb-1 px-3" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                Status
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <button class="dropdown-item" name="belum-bayar" type="submit">Belum Bayar</button>
-                <button class="dropdown-item" name="pengerjaan" type="submit">Pengerjaan</button>
-                <button class="dropdown-item" name="selesai" type="submit">Selesai</button>
-                <button class="dropdown-item" name="gagal" type="submit">Gagal</button>
-              </ul>
-            </form>
-
-          </div>
-
-
-          <form class="row gx-4" action="" method="post">
-            <div class="dropdown col-auto">
-
-              <div class="form-group">
-                <input class="form-control btn btn-sm bg-gradient-white mb-1 px-3" value="<?php if (isset($_POST['from_date'])) {
-                                                                                            echo $_POST['from_date'];
-                                                                                          }  ?>" type="date" name="from_date" />
-
-              </div>
-
-            </div>
-            <div class="dropdown col-auto">
-
-              <button class="btn btn-sm bg-gradient-white mb-1 px-3" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                To Date
-              </button>
-
-            </div>
-
-            <div class="dropdown col-auto">
-
-              <div class="form-group">
-                <input class="form-control btn btn-sm bg-gradient-white mb-1 px-3" value="<?php if (isset($_POST['to_date'])) {
-                                                                                            echo $_POST['to_date'];
-                                                                                          }  ?>" type="date" name="to_date" />
-
-              </div>
-
-            </div>
-
-
-            <div class="dropdown col-auto">
-
-              <button class="btn btn-sm bg-gradient-dark mb-1 px-3" type="submit" aria-expanded="false">
-                Filter
-              </button>
-
-
-            </div>
-
-            <div class="dropdown col-auto">
-
-              <a href="export_transaksi.php" target=”_blank” class="btn btn-sm bg-gradient-dark mb-1 px-3" aria-expanded="false"> Export</a>
-
-            </div>
+                        
+                      <?php
+                          }
+                      ?>
 
 
 
+                      </tbody>
 
-            <div class="col-lg-4 col-md-6 me-sm-10 mx-auto mt-0">
-              <div class="nav-wrapper position-relative end-0">
-                <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-                  <!-- <form class="input-group" action="" method="post"> -->
-                  <div class="input-group">
-                    <input type="text" class="form-control ms-4" name="data" placeholder="Type here..." aria-label="Type here..." aria-describedby="button-addon2">
-                    <button class="btn bg-gradient-dark  mb-0" name="caridata" type="submit" id="button-addon2">
-                      <i class="fas fa-search" aria-hidden="true"></i>
-                    </button>
+                      </tbody>
+                    </table>
                   </div>
-                  <!-- </form> -->
                 </div>
-              </div>
-            </div>
-          </form>
+              </div> <!-- simple table -->
+            </div> <!-- end section -->
+          </div> <!-- .col-12 -->
+        </div> <!-- .row -->
+      </div> <!-- .container-fluid --></center>
+                        
+                        
+<!-- PPPP -->
 
-        </div>
-      </div>
-    </div>
-    </section>
-    <!-- ** About Area Ends ** -->
 
     <!-- ** Footer Start ** -->
     <footer>
@@ -264,6 +269,32 @@
     <script src="assets/js/slick.js"></script> 
     <script src="assets/js/lightbox.js"></script> 
     <script src="assets/js/isotope.js"></script> 
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
+
+  <script>
+$(document).ready(function() {
+    var table = $('#tableku').DataTable( {       
+        scrollX:        true,
+        scrollCollapse: true,
+        autoWidth:         true,  
+         paging:         true,       
+        columnDefs: [
+        { "width": "150px", "targets": [0,1,2,3,4] },       
+      ]
+    } );
+} );
+  </script>
+  <style>
+    div.dataTables_wrapper  div.dataTables_filter {
+  width: 30%;
+  float: none;
+  text-align: center;
+}
+td.table-cell-edit{
+    background-color: lightgoldenrodyellow;
+} 
+   </style>
     
     <!-- Global Init -->
     <script src="assets/js/custom.js"></script>
