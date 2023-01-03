@@ -574,7 +574,9 @@ if (isset($_POST['submit-reservation'])) {
                                 </div>
                             </article>
                             <!--<div class="col-lg-12">
-                        <section class='tabs-content'>-->   
+                        <section class='tabs-content'>-->
+                          
+                        </section>
                     </div>
                 </div>
             </div>
