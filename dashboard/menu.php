@@ -95,7 +95,7 @@ if( !isset($_SESSION["login"])){
             </a>
             <ul class="collapse list-unstyled pl-4 w-100" id="ui-elements">
               <li class="nav-item">
-                <a class="nav-link pl-3" href="./menu.php"><span class="ml-1 item-text">menu</span>
+                <a class="nav-link pl-3" href="./karyawan.php"><span class="ml-1 item-text">karyawan</span>
                 </a>
               </li>
               <li class="nav-item">
@@ -143,7 +143,7 @@ if( !isset($_SESSION["login"])){
             </a>
             <ul class="collapse list-unstyled pl-4 w-100" id="charts">
               <li class="nav-item">
-                <a class="nav-link pl-3" href="./absen.php"><span class="ml-1 item-text">menu</span></a>
+                <a class="nav-link pl-3" href="./absen.php"><span class="ml-1 item-text">Absen</span></a>
               </li>
               
             </ul>
@@ -302,9 +302,7 @@ $no++;
                             <td><?php echo $Namamenu; ?></td>
                             <td>
 
-                              <span class="avatar avatar-sm mt-2">
-                                <img src="./foto/menu/<?php echo $foto; ?>" alt="..." class="avatar-img rounded-circle">
-                              </span>
+                              <button class="btn btn-primary btn-sm ms-auto" data-toggle="modal" data-target="#modal-foto<?php echo $row['id'] ?>">Lihat</button>
 
                             </td>
                             <td><?php echo $category; ?></td>
@@ -372,7 +370,41 @@ $no++;
 
                         <!-- End Pop Up Edit -->
 
+                        <!-- Pop Up Lihat Foto  -->
+                        <div class="modal fade" id="modal-foto<?= $row['id'] ?>" tabdashboard="-1" role="dialog" aria-labelledby="verticalModalTitle" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="verticalModalTitle">Warning!</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                                <div class="modal-body">
+                                  <div class="form-group align-middle text-center">
+                                <img src="./foto/menu/<?php echo $foto ?>" alt="Foto Menu" class="w-100 border-radius-lg shadow-sm" />
+                              </div>
+                              <div class="form-group align-middle text-center">
 
+                                <a class='btn btn-warning btn-sm ms-auto' target='_blank' href='./foto/menu/<?php echo $foto ?>'>Lihat Foto</a>
+
+                              </div>
+
+                                  <div class="modal-footer">
+
+
+                                    <!-- <a href="menu.php?id=<?= $row['id'] ?>" class="btn btn-danger btn-sm ms-auto">Delete</a> -->
+
+                                    <button class="btn btn-danger btn-sm ms-auto" name="delete">Delete</button>
+                                    <button class="btn btn-success btn-sm ms-auto" data-dismiss="modal">Close</button>
+                                    <!-- <button class="btn btn-danger btn-sm ms-auto" href="hapus_menu.php?id=<?php echo $row['id']; ?>" data-close-delete>Close</button> -->
+                                  </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+
+                         <!-- End Pop Up Lihat Foto -->
 
                         <!-- Pop Up Delete -->
                         <div class="modal fade" id="verticalModal<?= $row['id'] ?>" tabdashboard="-1" role="dialog" aria-labelledby="verticalModalTitle" aria-hidden="true">

@@ -275,7 +275,7 @@ if( !isset($_SESSION["login"])){
                   <select class="form-control" name="add-status" required>
                   <option>Pilih Status</option>
                     <option value="hadir">Hadir</option>
-                    <option value="absent">Absent</option>
+                    <option value="Tidak Hadir">Tidak Hadir</option>
                     
 
                   </select>

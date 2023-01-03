@@ -318,7 +318,7 @@ if( !isset($_SESSION["login"])){
                         <h3 class="card-title mb-0">
                           <?php
                         require ("./config.php");
-                          $query = "SELECT DISTINCT SUM(jumlah) AS total FROM income WHERE MONTH(tgl_income)=MONTH(CURRENT_DATE - INTERVAL 1 MONTH) AND YEAR(tgl_income)=YEAR(curdate())";
+                          $query = "SELECT SUM(jumlah) AS total FROM income WHERE MONTH(tgl_income)=MONTH(CURRENT_DATE - INTERVAL 1 MONTH)";
                           $querysum = mysqli_query($koneksi,$query);
 
                         while ($row = mysqli_fetch_array($querysum)) {

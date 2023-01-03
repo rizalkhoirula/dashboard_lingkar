@@ -454,7 +454,6 @@ $no++;
 
                             <td>
                               <button class="btn btn-primary btn-sm ms-auto" data-toggle="modal" data-target="#modal-edit<?php echo $row['id'] ?>">Edit</button>
-                              <a class="btn btn-success btn-sm ms-auto" target="_blank" href="export_absen.php?id=<?= $row['idkaryawan'] ?>">Export</a>
                               <button class="btn btn-danger btn-sm ms-auto" data-toggle="modal" data-target="#verticalModal<?php echo $row['id'] ?>">Delete</button>
                             </td>
                         </tr>
