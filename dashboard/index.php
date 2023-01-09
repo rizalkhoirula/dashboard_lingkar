@@ -279,7 +279,8 @@ if( !isset($_SESSION["login"])){
                         
                         <?php
                         require ("./config.php");
-                          $query = "SELECT DISTINCT SUM(income.jumlah) - SUM(barang.harga) AS total from barang JOIN income WHERE MONTH(income.tgl_income)=MONTH(curdate()) AND YEAR(income.tgl_income)=YEAR(curdate()) AND MONTH(barang.tanggal)=MONTH(curdate()) AND YEAR(barang.tanggal)=YEAR(curdate())";
+                          $query = "SELECT (SELECT SUM(income.jumlah) FROM income WHERE MONTH(income.tgl_income)=MONTH(curdate()) AND YEAR(income.tgl_income)=YEAR(curdate())) - 
+       (SELECT SUM(barang.harga) FROM barang WHERE MONTH(barang.tanggal)=MONTH(curdate()) AND YEAR(barang.tanggal)=YEAR(curdate())) AS total";
                           $querysum = mysqli_query($koneksi,$query);
 
                         while ($row = mysqli_fetch_array($querysum)) {
