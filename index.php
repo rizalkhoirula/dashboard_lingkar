@@ -552,7 +552,7 @@ if (isset($_POST['submit-reservation'])) {
                                                     <div class="tab-item">
                                                     <img src="assets/images/drink9.jpg" alt="">
                                                         <h4>Jus</h4>
-                                                        <p>arian: Melon, apel <br> dan jambu.</p>
+                                                        <p>Varian: Melon, apel <br> dan jambu.</p>
                                                         <div class="price">
                                                             <h6>6k</h6>
                                                         </div>
@@ -741,11 +741,6 @@ if (isset($_POST['submit-reservation'])) {
                             </ul>
                     </div>
                 </div>
-                <!--<div class="col-lg-4">
-                    <div class="logo">
-                        <a href="index.html"><img src="assets/images/revisi logo putih 2.png" alt=""></a>
-                    </div>
-                </div>-->
                 <div class="col-lg-4 col-xs-12">
                     <div class="left-text-content">
                     <div class="col-lg-6 left-map">
@@ -753,10 +748,6 @@ if (isset($_POST['submit-reservation'])) {
                                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2967.147366223566!2d113.72266151386259!3d-8.168460184118109!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd695f7d0700c97%3A0x6b8c15e517c5f08a!2sAngkringan%20lingkar!5e1!3m2!1sen!2sid!4v1672647593684!5m2!1sen!2sid"  width="500%" height="150px" frameborder="0" style="border:0" allowfullscreen=""></iframe>
                             </div>
                         </div>
-                        
-                        <!--<p><b> © Copyright
-                        
-                        <br>Lingkar Angkringan dan Cafe</b></p>-->
                     </div>
                 </div>
             </div>
