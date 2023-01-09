@@ -61,7 +61,7 @@ if( !isset($_SESSION["login"])){
 
 
         <li class="nav-item">
-            <a class="nav-link text-muted my-2" href="./dashboard.php" id="modeSwitcher" data-mode="dark">
+            <a class="nav-link text-muted my-2" href="./index.php" id="modeSwitcher" data-mode="dark">
               <i class="fe fe-sun fe-16"></i>
             </a>
           </li>
@@ -74,7 +74,7 @@ if( !isset($_SESSION["login"])){
       <nav class="vertnav navbar navbar-light">
         <!-- nav bar -->
         <div class="w-100 mb-4 d-flex">
-          <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="./dashboard.php">
+          <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="./index.php">
             <svg version="1.1" id="logo" class="navbar-brand-img brand-sm" xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 120 120" xml:space="preserve">
               <g>
@@ -88,7 +88,7 @@ if( !isset($_SESSION["login"])){
         <!-- SIDEBAR -->
         <ul class="navbar-nav flex-fill w-100 mb-2">
           <li class="nav-item w-100">
-            <a class="nav-link" href="dashboard.php">
+            <a class="nav-link" href="index.php">
               <br>
               <i class="fe fe-home fe-16"></i>
               <span class="ml-3 item-text">Dashboard</span>
@@ -274,12 +274,12 @@ if( !isset($_SESSION["login"])){
                   <div class="card-body">
                     <div class="row align-items-center">
                       <div class="col">
-                        <small class="text-muted mb-1">Total Pendapatan</small>
+                        <small class="text-muted mb-1">Total Kerugian</small>
                         <h3 class="card-title mb-0">
                         
                         <?php
                         require ("./config.php");
-                          $query = "SELECT DISTINCT SUM(jumlah) AS total FROM income WHERE MONTH(tgl_income)=MONTH(curdate()) AND YEAR(tgl_income)=YEAR(curdate())";
+                          $query = "SELECT DISTINCT SUM(income.jumlah) - SUM(barang.harga) AS total from barang JOIN income WHERE MONTH(income.tgl_income)=MONTH(curdate()) AND YEAR(income.tgl_income)=YEAR(curdate()) AND MONTH(barang.tanggal)=MONTH(curdate()) AND YEAR(barang.tanggal)=YEAR(curdate())";
                           $querysum = mysqli_query($koneksi,$query);
 
                         while ($row = mysqli_fetch_array($querysum)) {
@@ -318,7 +318,7 @@ if( !isset($_SESSION["login"])){
                         <h3 class="card-title mb-0">
                           <?php
                         require ("./config.php");
-                          $query = "SELECT SUM(jumlah) AS total FROM income WHERE MONTH(tgl_income)=MONTH(CURRENT_DATE - INTERVAL 1 MONTH)";
+                          $query = "SELECT DISTINCT SUM(jumlah) AS total FROM income WHERE MONTH(tgl_income)=MONTH(curdate()) AND YEAR(tgl_income)=YEAR(curdate())";
                           $querysum = mysqli_query($koneksi,$query);
 
                         while ($row = mysqli_fetch_array($querysum)) {
@@ -337,8 +337,8 @@ if( !isset($_SESSION["login"])){
                         }
                           ?>
                         </h3>
-                        <p class="small text-muted mb-0"><span
-                            class=" text-success"></span><span>Bulan Kemarin</span></p>
+                        <small class="text-muted mb-1">Bulan Ini</small>
+                        
                       </div>
                       <div class="col-4 text-right">
                         <span class="sparkline inlinebar"></span>

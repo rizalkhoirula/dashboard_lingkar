@@ -55,7 +55,7 @@ else {
           class="form-control mr-sm-2 bg-transparent border-0 pl-4 text-muted" type="search"
           placeholder="Type something..." aria-label="Search"></form>
       <ul class="nav">
-        <li class="nav-item"><a class="nav-link text-muted my-2" href="./dashboard.php" id="modeSwitcher"
+        <li class="nav-item"><a class="nav-link text-muted my-2" href="./index.php" id="modeSwitcher"
             data-mode="dark"><i class="fe fe-sun fe-16"></i></a></li>
       </ul>
     </nav>
@@ -77,7 +77,7 @@ else {
           <!-- SIDEBAR -->
         <ul class="navbar-nav flex-fill w-100 mb-2">
           <li class="nav-item w-100">
-            <a class="nav-link" href="dashboard.php">
+            <a class="nav-link" href="index.php">
               <br>
               <i class="fe fe-home fe-16"></i>
               <span class="ml-3 item-text">Dashboard</span>

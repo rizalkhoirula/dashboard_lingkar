@@ -4,7 +4,7 @@ require ('config.php');
 session_start();
 // LOGIN
 if( isset($_SESSION["login"])){
-  header("location: dashboard.php");
+  header("location: index.php");
   exit;
 }
 
@@ -33,7 +33,7 @@ if (isset($_POST['submit'])) {
     $_SESSION["sspassword"] = $data_login["password"];
     $_SESSION["ssnohp"] = $data_login["nohp"];
   
-        header("Location: dashboard.php");
+        header("Location: index.php");
         exit;
     } else {
         echo "<script>alert('Email atau password Anda salah. Silahkan coba lagi!')</script>";
