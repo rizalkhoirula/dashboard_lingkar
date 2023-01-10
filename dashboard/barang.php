@@ -538,6 +538,7 @@ $no++;
                   <option value="">Pilih Jenis lagi</option>
                     <option value="basah">basah</option>
                     <option value="kering">Kering</option>
+                    <option value="other">Other</option>
                     
 
                   </select>
