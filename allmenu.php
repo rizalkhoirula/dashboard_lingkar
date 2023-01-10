@@ -1,5 +1,5 @@
 <?php
-require ("dashboard/config.php");
+require ("admin/config.php");
 ?>
 
 

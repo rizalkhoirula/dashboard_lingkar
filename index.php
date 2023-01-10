@@ -1,5 +1,5 @@
 <?php
-require("dashboard/config.php");
+require("admin/config.php");
 session_start();
 error_reporting(0);
 
