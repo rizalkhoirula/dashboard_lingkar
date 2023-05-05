@@ -1,0 +1,36 @@
+runtime: php
+env: flex
+
+runtime_config:
+  document_root: .
+
+# env_variables:
+#   # Replace values with your own settings.
+#   APP_NAME: YOUR_APP_NAME
+#   DB_HOST: YOUR_DB_HOST
+#   DB_USER: YOUR_DB_USER
+#   DB_PASSWORD: YOUR_DB_PASSWORD
+#   DB_NAME: YOUR_DB_NAME
+
+# You can add additional service accounts below.
+# - service_account: SERVICE_ACCOUNT_EMAIL
+#   scopes:
+#     - SCOPE
+
+# Configure automatic scaling.
+# automatic_scaling:
+#   min_num_instances: 1
+#   max_num_instances: 5
+#   cpu_utilization:
+#     target_utilization: 0.5
+
+# Configure health checks.
+# health_check:
+#   enable_health_check: True
+#   check_interval_sec: 5
+#   timeout_sec: 4
+#   unhealthy_threshold: 2
+#   healthy_threshold: 2
+
+# Specify a custom entrypoint command.
+entrypoint: php index.php
